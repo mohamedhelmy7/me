@@ -1,90 +1,682 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stars in the Sky</title>
+
+    <title>Stars Explorer</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #050b24;
-            color: white;
-            text-align: center;
-            margin: 0;
-            padding: 40px;
+        * {
+            box-sizing: border-box;
         }
 
-        .container {
-            max-width: 700px;
-            margin: auto;
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at 20% 20%, #1c2b5a 0, transparent 25%),
+                radial-gradient(circle at 80% 30%, #24144d 0, transparent 25%),
+                #030712;
+            color: white;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px 30px;
+        }
+
+        header .big-star {
+            font-size: 70px;
         }
 
         h1 {
             color: #ffd700;
+            margin: 10px 0;
+            font-size: 42px;
         }
 
-        .star {
-            font-size: 60px;
-            margin: 20px;
-        }
-
-        p {
+        header p {
+            color: #cbd5e1;
             font-size: 18px;
-            line-height: 1.6;
+        }
+
+        .search-box {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        input {
+            width: min(450px, 90%);
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid #475569;
+            background: #111827;
+            color: white;
+            font-size: 16px;
+            outline: none;
         }
 
         button {
-            background-color: #ffd700;
+            padding: 14px 22px;
             border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            cursor: pointer;
+            border-radius: 10px;
+            background: #ffd700;
+            color: #111827;
             font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         button:hover {
-            background-color: white;
+            background: white;
         }
 
-        #fact {
-            margin-top: 20px;
+        .examples {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 30px;
+        }
+
+        .examples span {
             color: #ffd700;
-            font-weight: bold;
+            cursor: pointer;
+            margin: 0 6px;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: auto;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: #ffd700;
+            display: none;
+        }
+
+        .error {
+            background: #3f1212;
+            border: 1px solid #ef4444;
+            color: #fecaca;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .info-card {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid #334155;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .info-card h2 {
+            color: #ffd700;
+            margin-top: 0;
+            font-size: 30px;
+        }
+
+        .star-info {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 25px;
+        }
+
+        .star-image {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #111827;
+        }
+
+        .description {
+            color: #dbeafe;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        .section-title {
+            color: #ffd700;
+            text-align: center;
+            margin: 40px 0 20px;
+            font-size: 30px;
+        }
+
+        .fact {
+            text-align: center;
+            background: #111827;
+            border: 1px solid #334155;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            font-size: 18px;
+            color: #fef3c7;
+        }
+
+        .books {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .book {
+            background: #111827;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 15px;
+            transition: transform 0.2s;
+        }
+
+        .book:hover {
+            transform: translateY(-5px);
+        }
+
+        .book img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #1e293b;
+        }
+
+        .book h3 {
+            color: #ffd700;
+            font-size: 18px;
+        }
+
+        .book p {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .book a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            color: #64748b;
+            padding: 50px 20px 30px;
+        }
+
+        @media (max-width: 700px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .star-info {
+                grid-template-columns: 1fr;
+            }
+
+            .star-image {
+                max-height: 300px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+<header>
+    <div class="big-star">⭐</div>
 
-        <div class="star">⭐</div>
+    <h1>Stars Explorer</h1>
 
-        <h1>Stars in the Sky</h1>
+    <p>
+        Discover stars, read about them, see images and find books about them.
+    </p>
 
-        <p>
-            Stars are huge balls of hot gas, mostly made of hydrogen and helium.
-            They produce light and heat through nuclear fusion in their cores.
-        </p>
+    <div class="search-box">
+        <input
+            id="starInput"
+            type="text"
+            placeholder="Enter a star name e.g. Sirius"
+        >
 
-        <p>
-            The Sun is actually a star. It looks much bigger and brighter than
-            other stars because it is much closer to Earth.
-        </p>
-
-        <button onclick="showFact()">Show a Star Fact</button>
-
-        <div id="fact"></div>
-
+        <button onclick="searchStar()">
+            Search Star
+        </button>
     </div>
 
-    <script>
-        function showFact() {
-            document.getElementById("fact").innerHTML =
-                "✨ my favorite star is the only doctor in my life ";
+    <div class="examples">
+        Try:
+        <span onclick="searchExample('Sirius')">Sirius</span>
+        <span onclick="searchExample('Betelgeuse')">Betelgeuse</span>
+        <span onclick="searchExample('Vega')">Vega</span>
+        <span onclick="searchExample('Polaris')">Polaris</span>
+    </div>
+</header>
+
+
+<main class="container">
+
+    <div id="loading" class="loading">
+        🔭 Searching the universe...
+    </div>
+
+    <div id="error" class="error"></div>
+
+    <section id="starSection" class="info-card" style="display:none;">
+
+        <h2 id="starName"></h2>
+
+        <div class="star-info">
+
+            <div>
+                <img
+                    id="starImage"
+                    class="star-image"
+                    src=""
+                    alt="Star image"
+                >
+            </div>
+
+            <div>
+                <p id="starDescription" class="description"></p>
+
+                <a
+                    id="wikiLink"
+                    class="read-more"
+                    href="#"
+                    target="_blank"
+                >
+                    Read more on Wikipedia →
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="factSection" style="display:none;">
+
+        <h2 class="section-title">
+            ✨ Star Fact
+        </h2>
+
+        <div id="fact" class="fact"></div>
+
+        <div style="text-align:center;">
+            <button onclick="showFact()">
+                Show Another Fact
+            </button>
+        </div>
+
+    </section>
+
+
+    <section id="booksSection" style="display:none;">
+
+        <h2 class="section-title">
+            📚 Books Related to This Star
+        </h2>
+
+        <div id="books" class="books"></div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <p>
+        Stars Explorer • Built with HTML, CSS & JavaScript
+    </p>
+
+    <p>
+        Data provided by Wikipedia and Open Library
+    </p>
+</footer>
+
+
+<script>
+
+    // --------------------------------------------------
+    // Global variables
+    // --------------------------------------------------
+
+    let currentStar = "";
+
+    const facts = [
+        "The Sun is a star.",
+        "Stars produce energy through nuclear fusion.",
+        "Some stars are many times larger than the Sun.",
+        "A star's color can tell us something about its temperature.",
+        "Stars can live for millions or billions of years.",
+        "The nearest star to Earth after the Sun is Proxima Centauri."
+    ];
+
+
+    // --------------------------------------------------
+    // Search Star
+    // --------------------------------------------------
+
+    async function searchStar() {
+
+        const input = document.getElementById("starInput");
+
+        const starName = input.value.trim();
+
+        if (!starName) {
+            showError("Please enter a star name.");
+            return;
         }
-    </script>
+
+        currentStar = starName;
+
+        hideError();
+
+        document.getElementById("loading").style.display = "block";
+        document.getElementById("starSection").style.display = "none";
+        document.getElementById("booksSection").style.display = "none";
+        document.getElementById("factSection").style.display = "none";
+
+        try {
+
+            // Wikipedia API
+            const wikipediaURL =
+                "https://en.wikipedia.org/api/rest_v1/page/summary/" +
+                encodeURIComponent(starName);
+
+            const response = await fetch(wikipediaURL);
+
+            if (!response.ok) {
+                throw new Error(
+                    "Star not found on Wikipedia."
+                );
+            }
+
+            const data = await response.json();
+
+            displayStar(data);
+
+            // Search books
+            await searchBooks(starName);
+
+            document.getElementById("factSection").style.display = "block";
+
+            showFact();
+
+        } catch (error) {
+
+            console.error(error);
+
+            showError(
+                "I couldn't find information about this star. " +
+                "Try another name such as Sirius, Vega or Polaris."
+            );
+
+        } finally {
+
+            document.getElementById("loading").style.display = "none";
+        }
+    }
+
+
+    // --------------------------------------------------
+    // Display Wikipedia information
+    // --------------------------------------------------
+
+    function displayStar(data) {
+
+        document.getElementById("starSection").style.display = "block";
+
+        document.getElementById("starName").textContent =
+            data.title || currentStar;
+
+        document.getElementById("starDescription").textContent =
+            data.extract ||
+            "No description available.";
+
+        const image = document.getElementById("starImage");
+
+        if (data.thumbnail && data.thumbnail.source) {
+
+            image.src = data.thumbnail.source;
+
+        } else {
+
+            image.src =
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Starsinthesky.jpg/640px-Starsinthesky.jpg";
+        }
+
+        const wikiLink =
+            document.getElementById("wikiLink");
+
+        wikiLink.href =
+            data.content_urls?.desktop?.page ||
+            "https://en.wikipedia.org/wiki/" +
+            encodeURIComponent(currentStar);
+    }
+
+
+    // --------------------------------------------------
+    // Search Books using Open Library API
+    // --------------------------------------------------
+
+    async function searchBooks(starName) {
+
+        const booksContainer =
+            document.getElementById("books");
+
+        booksContainer.innerHTML =
+            "<p>📚 Searching for books...</p>";
+
+        const url =
+            "https://openlibrary.org/search.json?q=" +
+            encodeURIComponent(starName) +
+            "&limit=8";
+
+        try {
+
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error("Book API error");
+            }
+
+            const data = await response.json();
+
+            booksContainer.innerHTML = "";
+
+            if (!data.docs || data.docs.length === 0) {
+
+                booksContainer.innerHTML =
+                    "<p>No books found for this star.</p>";
+
+                document.getElementById("booksSection")
+                    .style.display = "block";
+
+                return;
+            }
+
+
+            data.docs.slice(0, 8).forEach(book => {
+
+                const title =
+                    book.title || "Unknown title";
+
+                const author =
+                    book.author_name
+                        ? book.author_name[0]
+                        : "Unknown author";
+
+                const year =
+                    book.first_publish_year ||
+                    "Unknown year";
+
+                let cover =
+                    "https://via.placeholder.com/300x400?text=No+Cover";
+
+                if (book.cover_i) {
+
+                    cover =
+                        "https://covers.openlibrary.org/b/id/" +
+                        book.cover_i +
+                        "-M.jpg";
+                }
+
+                const key =
+                    book.key || "";
+
+                const bookURL =
+                    key
+                        ? "https://openlibrary.org" + key
+                        : "https://openlibrary.org/search?q=" +
+                          encodeURIComponent(title);
+
+
+                const card =
+                    document.createElement("div");
+
+                card.className = "book";
+
+                card.innerHTML = `
+                    <img
+                        src="${cover}"
+                        alt="${escapeHTML(title)}"
+                    >
+
+                    <h3>
+                        ${escapeHTML(title)}
+                    </h3>
+
+                    <p>
+                        <strong>Author:</strong>
+                        ${escapeHTML(author)}
+                    </p>
+
+                    <p>
+                        <strong>First published:</strong>
+                        ${year}
+                    </p>
+
+                    <a
+                        href="${bookURL}"
+                        target="_blank"
+                    >
+                        View book →
+                    </a>
+                `;
+
+                booksContainer.appendChild(card);
+            });
+
+            document.getElementById("booksSection")
+                .style.display = "block";
+
+        } catch (error) {
+
+            console.error(error);
+
+            booksContainer.innerHTML =
+                "<p>Could not load books right now.</p>";
+
+            document.getElementById("booksSection")
+                .style.display = "block";
+        }
+    }
+
+
+    // --------------------------------------------------
+    // Random star fact
+    // --------------------------------------------------
+
+    function showFact() {
+
+        const randomIndex =
+            Math.floor(Math.random() * facts.length);
+
+        document.getElementById("fact").textContent =
+            "✨ " + facts[randomIndex];
+    }
+
+
+    // --------------------------------------------------
+    // Example stars
+    // --------------------------------------------------
+
+    function searchExample(name) {
+
+        document.getElementById("starInput").value =
+            name;
+
+        searchStar();
+    }
+
+
+    // --------------------------------------------------
+    // Error handling
+    // --------------------------------------------------
+
+    function showError(message) {
+
+        const error =
+            document.getElementById("error");
+
+        error.textContent = message;
+
+        error.style.display = "block";
+    }
+
+
+    function hideError() {
+
+        document.getElementById("error")
+            .style.display = "none";
+    }
+
+
+    // --------------------------------------------------
+    // Basic HTML escaping
+    // --------------------------------------------------
+
+    function escapeHTML(text) {
+
+        const div =
+            document.createElement("div");
+
+        div.textContent = text;
+
+        return div.innerHTML;
+    }
+
+
+    // --------------------------------------------------
+    // Press Enter to search
+    // --------------------------------------------------
+
+    document
+        .getElementById("starInput")
+        .addEventListener("keydown", function(event) {
+
+            if (event.key === "Enter") {
+                searchStar();
+            }
+
+        });
+
+</script>
 
 </body>
 </html>
+```
