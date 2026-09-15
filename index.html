@@ -1,30 +1,29 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Ailmaas — Discover AI</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ailmaas — The AI Universe</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
-:root{
-    --bg:#070711;
-    --bg2:#0d0d1c;
-    --card:rgba(255,255,255,.055);
-    --border:rgba(255,255,255,.1);
-    --text:#f7f7ff;
-    --muted:#9999b2;
-    --primary:#9b6cff;
-    --secondary:#5ce1e6;
-    --pink:#ff65c3;
-}
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+}
+
+:root{
+    --bg:#060610;
+    --bg2:#0c0c1a;
+    --card:rgba(255,255,255,.055);
+    --border:rgba(255,255,255,.10);
+    --text:#fff;
+    --muted:#9696ad;
+    --purple:#9b6cff;
+    --cyan:#58e1e8;
+    --pink:#ff62c7;
+    --green:#55e69b;
 }
 
 html{
@@ -34,241 +33,244 @@ html{
 body{
     font-family:Inter,Arial,sans-serif;
     background:
-        radial-gradient(circle at 20% 10%,rgba(155,108,255,.13),transparent 30%),
-        radial-gradient(circle at 80% 20%,rgba(92,225,230,.09),transparent 28%),
-        var(--bg);
+    radial-gradient(circle at 15% 10%,rgba(155,108,255,.16),transparent 28%),
+    radial-gradient(circle at 85% 20%,rgba(88,225,232,.10),transparent 28%),
+    var(--bg);
     color:var(--text);
     min-height:100vh;
     overflow-x:hidden;
 }
 
-/* ================= BACKGROUND ================= */
+/* =========================
+   BACKGROUND
+========================= */
 
-.bg-orb{
+.orb{
     position:fixed;
-    width:450px;
-    height:450px;
+    width:420px;
+    height:420px;
     border-radius:50%;
-    filter:blur(100px);
-    opacity:.12;
+    filter:blur(110px);
+    opacity:.10;
     pointer-events:none;
     z-index:-1;
 }
 
 .orb1{
-    background:var(--primary);
-    top:-200px;
-    left:-150px;
-    animation:float1 10s ease-in-out infinite;
+    background:#9b6cff;
+    top:-220px;
+    left:-180px;
+    animation:orb1 12s infinite alternate ease-in-out;
 }
 
 .orb2{
-    background:var(--secondary);
-    right:-200px;
-    top:300px;
-    animation:float2 12s ease-in-out infinite;
+    background:#58e1e8;
+    right:-220px;
+    top:35%;
+    animation:orb2 14s infinite alternate ease-in-out;
 }
 
-@keyframes float1{
-    50%{transform:translate(100px,100px)}
+@keyframes orb1{
+    to{
+        transform:translate(180px,160px);
+    }
 }
 
-@keyframes float2{
-    50%{transform:translate(-100px,-70px)}
+@keyframes orb2{
+    to{
+        transform:translate(-150px,-120px);
+    }
 }
 
-/* ================= NAVBAR ================= */
+/* =========================
+   NAV
+========================= */
 
 nav{
     position:sticky;
     top:0;
-    z-index:100;
+    z-index:1000;
     height:76px;
+    padding:0 5%;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 6%;
-    background:rgba(7,7,17,.72);
-    backdrop-filter:blur(20px);
+    background:rgba(6,6,16,.76);
+    backdrop-filter:blur(22px);
     border-bottom:1px solid rgba(255,255,255,.06);
 }
 
 .logo{
     display:flex;
     align-items:center;
-    gap:12px;
-    font-size:22px;
+    gap:13px;
+    font-size:23px;
     font-weight:800;
-    letter-spacing:-.7px;
 }
 
-.logo-gem{
+.gem{
     width:38px;
     height:38px;
-    position:relative;
     transform:rotate(45deg);
     border-radius:9px;
-    background:linear-gradient(
+    background:
+    linear-gradient(
         135deg,
-        #e8d7ff,
-        #9b6cff 35%,
-        #5ce1e6 70%,
-        #fff
+        #ffffff,
+        #a678ff 30%,
+        #5ce5eb 70%,
+        #ffffff
     );
     box-shadow:
-        0 0 18px rgba(155,108,255,.7),
-        0 0 45px rgba(92,225,230,.2);
-    animation:gemPulse 3s ease-in-out infinite;
+    0 0 20px rgba(155,108,255,.8),
+    0 0 50px rgba(88,225,232,.2);
+    animation:gem 3s infinite ease-in-out;
 }
 
-.logo-gem:before{
+.gem:after{
     content:"";
     position:absolute;
-    inset:6px;
-    border:2px solid rgba(255,255,255,.7);
-    border-radius:5px;
-}
-
-.logo-gem:after{
-    content:"";
-    position:absolute;
-    width:10px;
-    height:10px;
-    background:white;
+    width:9px;
+    height:9px;
     border-radius:50%;
-    top:5px;
+    background:white;
+    top:6px;
     left:7px;
     filter:blur(1px);
 }
 
-@keyframes gemPulse{
+@keyframes gem{
     50%{
         transform:rotate(225deg) scale(1.08);
-        box-shadow:
-        0 0 28px rgba(155,108,255,.9),
-        0 0 60px rgba(92,225,230,.3);
     }
 }
 
-.nav-links{
+.navlinks{
     display:flex;
-    gap:28px;
+    gap:27px;
 }
 
-.nav-links a{
-    color:var(--muted);
+.navlinks a{
+    color:#aaaabd;
     text-decoration:none;
-    font-size:14px;
+    font-size:13px;
     transition:.3s;
 }
 
-.nav-links a:hover{
+.navlinks a:hover{
     color:white;
 }
 
-/* ================= HERO ================= */
+/* =========================
+   HERO
+========================= */
 
 .hero{
     max-width:1150px;
     margin:auto;
-    padding:100px 20px 65px;
     text-align:center;
+    padding:105px 20px 65px;
 }
 
 .badge{
     display:inline-flex;
     align-items:center;
     gap:8px;
-    padding:8px 15px;
-    border:1px solid rgba(155,108,255,.3);
+    padding:9px 15px;
     border-radius:50px;
+    border:1px solid rgba(155,108,255,.3);
     background:rgba(155,108,255,.08);
-    color:#cbb8ff;
-    font-size:13px;
-    margin-bottom:24px;
-}
-
-.badge span{
-    width:7px;
-    height:7px;
-    background:#5ce1e6;
-    border-radius:50%;
-    box-shadow:0 0 12px #5ce1e6;
-}
-
-.hero h1{
-    font-size:clamp(48px,8vw,92px);
-    line-height:.95;
-    letter-spacing:-5px;
+    color:#c9b7ff;
+    font-size:12px;
     margin-bottom:25px;
 }
 
-.gradient{
-    background:linear-gradient(
-        90deg,
-        #fff,
-        #b897ff,
-        #5ce1e6,
-        #ff8bd7
-    );
-    -webkit-background-clip:text;
-    color:transparent;
-    background-size:200%;
-    animation:gradientMove 5s linear infinite;
+.dot{
+    width:7px;
+    height:7px;
+    background:#5ce1e8;
+    border-radius:50%;
+    box-shadow:0 0 15px #5ce1e8;
 }
 
-@keyframes gradientMove{
-    to{background-position:200%}
+.hero h1{
+    font-size:clamp(52px,9vw,100px);
+    line-height:.95;
+    letter-spacing:-6px;
+}
+
+.gradient{
+    background:
+    linear-gradient(
+        90deg,
+        white,
+        #a77cff,
+        #58e1e8,
+        #ff74ce,
+        white
+    );
+    background-size:250%;
+    -webkit-background-clip:text;
+    color:transparent;
+    animation:gradient 6s linear infinite;
+}
+
+@keyframes gradient{
+    to{
+        background-position:250%;
+    }
 }
 
 .hero p{
-    max-width:680px;
-    margin:auto;
+    max-width:700px;
+    margin:28px auto;
     color:var(--muted);
-    line-height:1.7;
-    font-size:16px;
+    line-height:1.8;
+    font-size:15px;
 }
 
-.search-box{
-    max-width:720px;
-    margin:38px auto 0;
+.search{
+    max-width:750px;
+    margin:35px auto 0;
     position:relative;
 }
 
-.search-box input{
+.search input{
     width:100%;
-    height:64px;
+    height:65px;
     border-radius:18px;
-    border:1px solid var(--border);
-    background:rgba(255,255,255,.065);
+    padding:0 25px 0 58px;
     color:white;
-    padding:0 24px 0 55px;
+    background:rgba(255,255,255,.055);
+    border:1px solid var(--border);
     outline:none;
-    font-size:15px;
-    backdrop-filter:blur(15px);
+    font-size:14px;
+    backdrop-filter:blur(20px);
     transition:.3s;
 }
 
-.search-box input:focus{
+.search input:focus{
     border-color:rgba(155,108,255,.7);
-    box-shadow:0 0 30px rgba(155,108,255,.12);
+    box-shadow:0 0 35px rgba(155,108,255,.12);
 }
 
-.search-icon{
+.searchIcon{
     position:absolute;
     left:21px;
-    top:21px;
+    top:19px;
+    font-size:23px;
     color:#aaa;
-    font-size:20px;
 }
 
-/* ================= STATS ================= */
+/* =========================
+   STATS
+========================= */
 
 .stats{
     display:flex;
     justify-content:center;
-    gap:60px;
-    margin-top:40px;
+    gap:70px;
+    margin-top:42px;
 }
 
 .stat strong{
@@ -277,42 +279,43 @@ nav{
 }
 
 .stat span{
-    color:var(--muted);
-    font-size:12px;
+    color:#77778e;
+    font-size:11px;
 }
 
-/* ================= MAIN ================= */
+/* =========================
+   CONTAINER
+========================= */
 
 .container{
-    max-width:1250px;
+    max-width:1350px;
     margin:auto;
     padding:20px;
 }
 
-.section-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+.heading{
     margin:25px 0;
 }
 
-.section-header h2{
-    font-size:25px;
+.heading h2{
+    font-size:27px;
 }
 
-.section-header p{
+.heading p{
+    margin-top:7px;
     color:var(--muted);
     font-size:13px;
-    margin-top:5px;
 }
 
-/* ================= CATEGORIES ================= */
+/* =========================
+   CATEGORIES
+========================= */
 
 .categories{
     display:flex;
-    gap:10px;
+    gap:9px;
     overflow-x:auto;
-    padding:5px 0 20px;
+    padding:8px 0 22px;
     scrollbar-width:none;
 }
 
@@ -322,106 +325,91 @@ nav{
 
 .category{
     white-space:nowrap;
-    padding:11px 17px;
-    border-radius:12px;
+    padding:11px 15px;
+    border-radius:11px;
     border:1px solid var(--border);
-    background:rgba(255,255,255,.04);
-    color:#aaa;
+    background:rgba(255,255,255,.035);
+    color:#9999ad;
     cursor:pointer;
-    font-size:13px;
+    font-size:12px;
     transition:.3s;
 }
 
 .category:hover,
 .category.active{
     color:white;
-    border-color:rgba(155,108,255,.6);
     background:rgba(155,108,255,.15);
-    box-shadow:0 0 20px rgba(155,108,255,.08);
+    border-color:rgba(155,108,255,.55);
 }
 
-/* ================= FILTERS ================= */
+/* =========================
+   FILTERS
+========================= */
 
 .filters{
     display:flex;
-    gap:10px;
     flex-wrap:wrap;
+    gap:10px;
     margin-bottom:25px;
 }
 
-select{
-    background:#111121;
+select,
+.filterBtn{
+    background:#101020;
+    color:#ccc;
     border:1px solid var(--border);
-    color:#ddd;
     padding:11px 14px;
-    border-radius:11px;
+    border-radius:10px;
     outline:none;
     cursor:pointer;
+    font-size:12px;
 }
 
-.favorite-filter{
-    padding:11px 16px;
-    border:1px solid var(--border);
-    border-radius:11px;
-    background:rgba(255,255,255,.04);
-    color:#aaa;
-    cursor:pointer;
+.filterBtn.active{
+    color:#ff7fd1;
+    border-color:#ff62c7;
 }
 
-.favorite-filter.active{
-    color:#ff8bd7;
-    border-color:#ff65c3;
-}
+/* =========================
+   GRID
+========================= */
 
-/* ================= GRID ================= */
-
-.tools-grid{
+.grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:
+    repeat(4,minmax(0,1fr));
     gap:18px;
 }
 
-.tool-card{
+.card{
     position:relative;
-    padding:20px;
-    border:1px solid var(--border);
-    border-radius:20px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.065),
-            rgba(255,255,255,.025)
-        );
-    backdrop-filter:blur(15px);
-    transition:.35s;
     overflow:hidden;
-    animation:cardIn .5s ease both;
+    padding:19px;
+    border-radius:20px;
+    border:1px solid var(--border);
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.065),
+        rgba(255,255,255,.025)
+    );
+    backdrop-filter:blur(16px);
+    transition:.35s;
+    animation:card .45s ease both;
 }
 
-.tool-card:before{
-    content:"";
-    position:absolute;
-    width:120px;
-    height:120px;
-    background:var(--primary);
-    opacity:.06;
-    filter:blur(45px);
-    top:-60px;
-    right:-50px;
-}
-
-.tool-card:hover{
-    transform:translateY(-7px);
+.card:hover{
+    transform:translateY(-8px);
     border-color:rgba(155,108,255,.45);
     box-shadow:
-        0 20px 50px rgba(0,0,0,.3),
-        0 0 30px rgba(155,108,255,.08);
+    0 25px 60px rgba(0,0,0,.35),
+    0 0 35px rgba(155,108,255,.08);
 }
 
-@keyframes cardIn{
+@keyframes card{
     from{
         opacity:0;
-        transform:translateY(15px);
+        transform:translateY(18px);
     }
     to{
         opacity:1;
@@ -429,173 +417,204 @@ select{
     }
 }
 
-.tool-top{
+.cardTop{
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
 }
 
-.tool-logo{
-    width:52px;
-    height:52px;
+.toolLogo{
+    width:55px;
+    height:55px;
+    padding:10px;
     border-radius:15px;
     background:white;
-    padding:10px;
     object-fit:contain;
-    box-shadow:0 8px 20px rgba(0,0,0,.25);
 }
 
-.favorite{
-    border:0;
+.heart{
     background:none;
+    border:0;
     color:#666;
-    font-size:22px;
+    font-size:23px;
     cursor:pointer;
     transition:.2s;
 }
 
-.favorite:hover,
-.favorite.active{
-    color:#ff65c3;
+.heart.active{
+    color:#ff62c7;
+}
+
+.heart:hover{
     transform:scale(1.2);
 }
 
-.tool-card h3{
+.card h3{
     margin-top:17px;
-    font-size:17px;
+    font-size:16px;
 }
 
-.tool-card p{
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.6;
+.description{
+    color:#9292a9;
+    font-size:11px;
+    line-height:1.65;
     margin:8px 0 15px;
-    min-height:40px;
+    min-height:38px;
 }
 
 .tags{
     display:flex;
     flex-wrap:wrap;
-    gap:6px;
+    gap:5px;
 }
 
 .tag{
-    padding:5px 8px;
-    border-radius:7px;
-    background:rgba(255,255,255,.06);
-    color:#aaa;
-    font-size:10px;
+    padding:5px 7px;
+    border-radius:6px;
+    background:rgba(255,255,255,.055);
+    color:#9999ad;
+    font-size:9px;
 }
 
-.tool-bottom{
+.bottom{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-top:18px;
+    margin-top:17px;
 }
 
 .rating{
-    color:#ffc861;
-    font-size:12px;
+    color:#ffd05c;
+    font-size:11px;
 }
 
 .price{
-    font-size:10px;
-    padding:5px 8px;
-    border-radius:7px;
-    background:rgba(92,225,230,.08);
-    color:#6de9ed;
+    font-size:9px;
+    padding:5px 7px;
+    border-radius:6px;
+    background:rgba(85,230,155,.08);
+    color:#62e6a0;
 }
 
 .visit{
     display:block;
+    margin-top:15px;
     text-align:center;
-    margin-top:17px;
-    padding:11px;
-    border-radius:10px;
     text-decoration:none;
     color:white;
-    font-size:12px;
+    font-size:11px;
     font-weight:600;
-    background:linear-gradient(
+    padding:11px;
+    border-radius:9px;
+    background:
+    linear-gradient(
         90deg,
         rgba(155,108,255,.8),
-        rgba(92,225,230,.55)
+        rgba(88,225,232,.55)
     );
     transition:.3s;
 }
 
 .visit:hover{
-    transform:scale(1.02);
-    box-shadow:0 8px 25px rgba(155,108,255,.2);
+    box-shadow:0 10px 30px rgba(155,108,255,.2);
 }
 
-/* ================= EMPTY ================= */
+/* =========================
+   LOAD MORE
+========================= */
+
+.loadMore{
+    display:block;
+    margin:35px auto;
+    padding:13px 25px;
+    border:1px solid rgba(155,108,255,.4);
+    background:rgba(155,108,255,.09);
+    color:white;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.loadMore:hover{
+    background:rgba(155,108,255,.2);
+    transform:translateY(-2px);
+}
+
+/* =========================
+   EMPTY
+========================= */
 
 .empty{
+    display:none;
     text-align:center;
     padding:80px 20px;
-    color:var(--muted);
-    display:none;
+    color:#77778e;
 }
 
-.empty div{
-    font-size:45px;
+.emptyIcon{
+    font-size:50px;
     margin-bottom:15px;
 }
 
-/* ================= FOOTER ================= */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-    border-top:1px solid var(--border);
     margin-top:90px;
-    padding:40px 20px;
+    padding:45px 20px;
     text-align:center;
-    color:#666;
-    font-size:12px;
+    border-top:1px solid var(--border);
+    color:#66667b;
+    font-size:11px;
 }
 
 footer strong{
     color:#aaa;
 }
 
-/* ================= RESPONSIVE ================= */
+/* =========================
+   RESPONSIVE
+========================= */
 
-@media(max-width:1000px){
-    .tools-grid{
+@media(max-width:1050px){
+    .grid{
         grid-template-columns:repeat(3,1fr);
     }
 }
 
-@media(max-width:700px){
-    .nav-links{
+@media(max-width:750px){
+
+    .navlinks{
         display:none;
     }
 
     .hero{
-        padding-top:70px;
+        padding-top:75px;
     }
 
     .hero h1{
-        letter-spacing:-3px;
+        letter-spacing:-4px;
     }
 
     .stats{
-        gap:25px;
+        gap:30px;
     }
 
-    .tools-grid{
+    .grid{
         grid-template-columns:repeat(2,1fr);
     }
 }
 
-@media(max-width:480px){
-    .tools-grid{
+@media(max-width:500px){
+
+    .grid{
         grid-template-columns:1fr;
     }
 
     .stats{
         flex-wrap:wrap;
+        gap:25px;
     }
 }
 </style>
@@ -603,19 +622,17 @@ footer strong{
 
 <body>
 
-<div class="bg-orb orb1"></div>
-<div class="bg-orb orb2"></div>
-
-<!-- NAVBAR -->
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
 
 <nav>
 
     <div class="logo">
-        <div class="logo-gem"></div>
+        <div class="gem"></div>
         Ailmaas
     </div>
 
-    <div class="nav-links">
+    <div class="navlinks">
         <a href="#tools">Explore</a>
         <a href="#categories">Categories</a>
         <a href="#favorites">Favorites</a>
@@ -624,13 +641,11 @@ footer strong{
 </nav>
 
 
-<!-- HERO -->
-
 <section class="hero">
 
     <div class="badge">
-        <span></span>
-        The AI Universe — All in One Place
+        <span class="dot"></span>
+        The World's AI Universe
     </div>
 
     <h1>
@@ -639,28 +654,31 @@ footer strong{
     </h1>
 
     <p>
-        Explore the world's most powerful artificial intelligence tools
-        for work, education, creativity, research, coding, business and everyday life.
+        Explore hundreds of artificial intelligence tools
+        for coding, creativity, business, education,
+        research, productivity and everyday life.
     </p>
 
-    <div class="search-box">
-        <span class="search-icon">⌕</span>
+    <div class="search">
+
+        <span class="searchIcon">⌕</span>
+
         <input
             id="search"
-            type="text"
-            placeholder="Search AI tools, categories, or capabilities..."
+            placeholder="Search thousands of AI tools..."
         >
+
     </div>
 
     <div class="stats">
 
         <div class="stat">
-            <strong id="toolCount">0+</strong>
+            <strong id="totalTools">0+</strong>
             <span>AI Tools</span>
         </div>
 
         <div class="stat">
-            <strong>20+</strong>
+            <strong id="totalCategories">0+</strong>
             <span>Categories</span>
         </div>
 
@@ -674,573 +692,721 @@ footer strong{
 </section>
 
 
-<!-- MAIN -->
-
 <main class="container" id="tools">
 
-    <div class="section-header">
-        <div>
-            <h2>Explore AI</h2>
-            <p>Find the perfect tool for what you want to accomplish.</p>
-        </div>
+    <div class="heading">
+        <h2>Explore AI Tools</h2>
+        <p>
+            Find the right artificial intelligence tool for your task.
+        </p>
     </div>
 
 
-    <!-- CATEGORIES -->
+    <div
+        class="categories"
+        id="categories"
+    ></div>
 
-    <div id="categories" class="categories">
-
-        <div class="category active" data-category="All">
-            All
-        </div>
-
-        <div class="category" data-category="Assistant">
-            🤖 Assistants
-        </div>
-
-        <div class="category" data-category="Coding">
-            💻 Coding
-        </div>
-
-        <div class="category" data-category="Image">
-            🎨 Image
-        </div>
-
-        <div class="category" data-category="Video">
-            🎬 Video
-        </div>
-
-        <div class="category" data-category="Audio">
-            🎵 Audio
-        </div>
-
-        <div class="category" data-category="Writing">
-            ✍️ Writing
-        </div>
-
-        <div class="category" data-category="Education">
-            🎓 Education
-        </div>
-
-        <div class="category" data-category="Research">
-            🔬 Research
-        </div>
-
-        <div class="category" data-category="Business">
-            💼 Business
-        </div>
-
-        <div class="category" data-category="Design">
-            🖌️ Design
-        </div>
-
-        <div class="category" data-category="Productivity">
-            ⚡ Productivity
-        </div>
-
-    </div>
-
-
-    <!-- FILTERS -->
 
     <div class="filters">
 
-        <select id="pricingFilter">
-            <option value="All">All Pricing</option>
+        <select id="pricing">
+            <option value="All">💰 All Pricing</option>
             <option value="Free">Free</option>
             <option value="Freemium">Freemium</option>
             <option value="Paid">Paid</option>
         </select>
 
-        <select id="levelFilter">
-            <option value="All">All Levels</option>
+        <select id="level">
+            <option value="All">🎯 All Levels</option>
             <option value="Beginner">Beginner</option>
             <option value="Intermediate">Intermediate</option>
             <option value="Advanced">Advanced</option>
         </select>
 
-        <select id="sortFilter">
-            <option value="featured">Featured</option>
-            <option value="rating">Highest Rated</option>
-            <option value="name">Name A-Z</option>
+        <select id="sort">
+            <option value="featured">🔥 Featured</option>
+            <option value="rating">⭐ Highest Rated</option>
+            <option value="name">🔤 A-Z</option>
         </select>
 
-        <button id="favoritesFilter" class="favorite-filter">
+        <button
+            id="favorites"
+            class="filterBtn"
+        >
             ♥ Favorites
         </button>
 
     </div>
 
 
-    <!-- TOOLS -->
+    <div
+        id="grid"
+        class="grid"
+    ></div>
 
-    <div id="toolsGrid" class="tools-grid"></div>
 
-    <div id="empty" class="empty">
-        <div>🔎</div>
-        <h3>No AI tools found</h3>
+    <div
+        id="empty"
+        class="empty"
+    >
+        <div class="emptyIcon">🔎</div>
+        <h3>No tools found</h3>
         <p>Try another search or filter.</p>
     </div>
+
+
+    <button
+        id="loadMore"
+        class="loadMore"
+    >
+        Load More AI Tools
+    </button>
 
 </main>
 
 
 <footer>
-    <strong>✦ Ailmaas</strong> — Discover the AI universe.
+
+    <strong>✦ Ailmaas</strong>
+
     <br><br>
-    Built as a frontend AI directory.
+
+    Discover the AI universe.
+
 </footer>
 
 
 <script>
 
-/* =====================================================
-   AILMAAS AI DATABASE
-   ===================================================== */
+/* =========================================================
+   AILMAAS DATABASE
+   =========================================================
 
-const aiTools = [
+   format:
+   name | category | description | domain | pricing |
+   level | rating | tags
+========================================================= */
 
-    {
-        name:"ChatGPT",
-        category:"Assistant",
-        description:"AI assistant for conversation, writing, research, analysis and coding.",
-        image:"https://cdn.simpleicons.org/openai/000000",
-        website:"https://chatgpt.com",
-        pricing:"Freemium",
-        level:"Beginner",
-        rating:4.9,
-        tags:["Chat","Research","Coding"]
-    },
+const rawTools = [
 
-    {
-        name:"Gemini",
-        category:"Assistant",
-        description:"Google's AI assistant for reasoning, writing, research and multimodal tasks.",
-        image:"https://cdn.simpleicons.org/googlegemini/4285F4",
-        website:"https://gemini.google.com",
-        pricing:"Freemium",
-        level:"Beginner",
-        rating:4.8,
-        tags:["Google","AI","Multimodal"]
-    },
+/* ASSISTANTS */
 
-    {
-        name:"Claude",
-        category:"Assistant",
-        description:"Advanced AI assistant designed for reasoning, writing and complex tasks.",
-        image:"https://cdn.simpleicons.org/anthropic/000000",
-        website:"https://claude.ai",
-        pricing:"Freemium",
-        level:"Beginner",
-        rating:4.9,
-        tags:["Writing","Research","Reasoning"]
-    },
+["ChatGPT","Assistants","AI assistant for writing, research, coding and everyday tasks.","chatgpt.com","Freemium","Beginner",4.9,"Chat,Research,Coding"],
+["Claude","Assistants","Advanced AI assistant for reasoning, writing and analysis.","claude.ai","Freemium","Beginner",4.9,"Chat,Writing,Reasoning"],
+["Gemini","Assistants","Google AI assistant for multimodal reasoning and productivity.","gemini.google.com","Freemium","Beginner",4.8,"Google,Chat,Multimodal"],
+["Microsoft Copilot","Assistants","AI assistant integrated across Microsoft's ecosystem.","copilot.microsoft.com","Freemium","Beginner",4.7,"Microsoft,Assistant,Work"],
+["Perplexity","Research","AI answer engine for web research and discovery.","perplexity.ai","Freemium","Beginner",4.8,"Search,Research,Answers"],
+["Poe","Assistants","Platform for accessing and creating AI bots.","poe.com","Freemium","Beginner",4.6,"Chat,Bots,Models"],
+["Pi","Assistants","Conversational AI focused on personal interaction.","pi.ai","Free","Beginner",4.5,"Chat,Personal"],
+["Character AI","Assistants","Create and interact with AI characters.","character.ai","Freemium","Beginner",4.5,"Characters,Chat,Fun"],
+["Grok","Assistants","AI assistant from xAI for conversation and information.","grok.com","Paid","Beginner",4.6,"Chat,Search,AI"],
+["Le Chat","Assistants","AI assistant from Mistral AI.","chat.mistral.ai","Freemium","Beginner",4.5,"Chat,Reasoning"] ,
 
-    {
-        name:"Perplexity",
-        category:"Research",
-        description:"AI-powered answer engine for research and discovering information.",
-        image:"https://cdn.simpleicons.org/perplexity/20B8CD",
-        website:"https://www.perplexity.ai",
-        pricing:"Freemium",
-        level:"Beginner",
-        rating:4.8,
-        tags:["Search","Research","Answers"]
-    },
+/* CODING */
 
-    {
-        name:"GitHub Copilot",
-        category:"Coding",
-        description:"AI coding assistant that helps developers write and understand code.",
-        image:"https://cdn.simpleicons.org/github/000000",
-        website:"https://github.com/features/copilot",
-        pricing:"Paid",
-        level:"Intermediate",
-        rating:4.8,
-        tags:["Programming","IDE","Developer"]
-    },
+["GitHub Copilot","Coding","AI pair programmer for developers.","github.com","Paid","Intermediate",4.8,"Code,IDE,Developer"],
+["Cursor","Coding","AI-first code editor for software development.","cursor.com","Freemium","Intermediate",4.8,"Code,Editor,Developer"],
+["Windsurf","Coding","AI-powered development environment.","windsurf.com","Freemium","Intermediate",4.7,"Code,IDE,Agent"],
+["Replit","Coding","Online development platform with AI coding features.","replit.com","Freemium","Beginner",4.6,"Code,Cloud,IDE"],
+["Codeium","Coding","AI coding assistant with autocomplete and chat.","codeium.com","Freemium","Intermediate",4.6,"Code,Autocomplete"],
+["Tabnine","Coding","AI coding assistant for professional developers.","tabnine.com","Paid","Intermediate",4.5,"Code,IDE"],
+["Amazon Q Developer","Coding","AI assistant for software development on AWS.","aws.amazon.com","Freemium","Advanced",4.5,"AWS,Code,Cloud"],
+["Sourcegraph Cody","Coding","AI coding assistant with large codebase context.","sourcegraph.com","Freemium","Advanced",4.5,"Code,Search,Developer"],
+["Blackbox AI","Coding","AI coding tools and developer assistant.","blackbox.ai","Freemium","Intermediate",4.4,"Code,Developer"],
+["Phind","Coding","AI search and coding assistant for developers.","phind.com","Freemium","Intermediate",4.5,"Code,Search"],
+["v0","Coding","Generate interfaces and applications from prompts.","v0.dev","Freemium","Intermediate",4.7,"UI,React,Code"],
+["Bolt","Coding","Build web applications through natural language.","bolt.new","Freemium","Beginner",4.6,"Web,Code,Apps"],
+["Lovable","Coding","Build applications using natural language.","lovable.dev","Freemium","Beginner",4.7,"Apps,Web,No-Code"],
+["Aider","Coding","AI pair programming directly in your terminal.","aider.chat","Free","Advanced",4.6,"Terminal,Git,Code"],
+["Continue","Coding","Open-source AI coding assistant.","continue.dev","Free","Advanced",4.5,"Open Source,IDE,Code"],
 
-    {
-        name:"Cursor",
-        category:"Coding",
-        description:"AI-first code editor designed for building software faster.",
-        image:"https://cdn.simpleicons.org/cursor/ffffff",
-        website:"https://cursor.com",
-        pricing:"Freemium",
-        level:"Intermediate",
-        rating:4.8,
-        tags:["Code","Editor","AI"]
-    },
+/* IMAGE */
 
-    {
-        name:"Midjourney",
-        category:"Image",
-        description:"Generative AI platform for creating high-quality images from prompts.",
-        image:"https://cdn.simpleicons.org/midjourney/ffffff",
-        website:"https://www.midjourney.com",
-        pricing:"Paid",
-        level:"Beginner",
-        rating:4.8,
-        tags:["Art","Images","Creative"]
-    },
+["Midjourney","Image","Generate artistic and photorealistic images with AI.","midjourney.com","Paid","Beginner",4.8,"Images,Art,Generation"],
+["Adobe Firefly","Image","Generative AI for images and creative workflows.","firefly.adobe.com","Freemium","Beginner",4.6,"Design,Images,Adobe"],
+["Leonardo AI","Image","AI image generation and creative production platform.","leonardo.ai","Freemium","Beginner",4.7,"Images,Art,Generation"],
+["Ideogram","Image","AI image generator with strong typography rendering.","ideogram.ai","Freemium","Beginner",4.7,"Images,Design,Text"],
+["FLUX","Image","Powerful open and commercial image generation models.","blackforestlabs.ai","Paid","Advanced",4.7,"Images,Models,Generation"],
+["Stable Diffusion","Image","Open ecosystem for AI image generation.","stability.ai","Free","Advanced",4.7,"Open Source,Images,Models"],
+["Playground AI","Image","Create and edit images using AI.","playground.com","Freemium","Beginner",4.5,"Images,Editing,Design"],
+["Krea","Image","Real-time AI image generation and enhancement.","krea.ai","Freemium","Intermediate",4.6,"Images,Realtime,Design"],
+["Recraft","Design","AI design platform for images, vectors and branding.","recraft.ai","Freemium","Intermediate",4.7,"Design,Vector,Branding"],
+["Photoroom","Image","AI-powered product photography and image editing.","photoroom.com","Freemium","Beginner",4.6,"Photos,Editing,Commerce"],
+["Remove.bg","Image","Automatically remove image backgrounds.","remove.bg","Freemium","Beginner",4.6,"Background,Images"],
+["Clipdrop","Image","AI-powered image generation and editing tools.","clipdrop.co","Freemium","Beginner",4.5,"Images,Editing"],
+["Magnific","Image","AI image upscaling and enhancement.","magnific.ai","Paid","Intermediate",4.6,"Upscale,Images"],
+["Artbreeder","Image","Create and explore AI-generated visual art.","artbreeder.com","Freemium","Beginner",4.3,"Art,Images"],
 
-    {
-        name:"Adobe Firefly",
-        category:"Image",
-        description:"Generative AI tools for creating and editing creative content.",
-        image:"https://cdn.simpleicons.org/adobe/FF0000",
-        website:"https://firefly.adobe.com",
-        pricing:"Freemium",
-        level:"Beginner",
-        rating:4.6,
-        tags:["Design","Images","Creative"]
-    },
+/* VIDEO */
 
-    {
-        name:"Runway",
-        category:"Video",
-        description:"AI creative platform for generating and editing video.",
-        image:"https://cdn.simpleicons.org/runway/ffffff",
-        website:"https://runwayml.com",
-        pricing:"Freemium",
-        level:"Intermediate",
-        rating:4.7,
-        tags:["Video","Generation","Film"]
-    },
+["Runway","Video","AI platform for video generation and editing.","runwayml.com","Freemium","Intermediate",4.7,"Video,Generation,Film"],
+["Pika","Video","Generate and transform videos with AI.","pika.art","Freemium","Beginner",4.6,"Video,Generation"],
+["Kling AI","Video","AI video generation and creative tools.","klingai.com","Freemium","Intermediate",4.7,"Video,Generation"],
+["Luma Dream Machine","Video","Generate cinematic videos from prompts.","lumalabs.ai","Freemium","Intermediate",4.7,"Video,Cinematic"],
+["HeyGen","Video","AI avatar and video creation platform.","heygen.com","Freemium","Beginner",4.7,"Avatar,Video,Marketing"],
+["Synthesia","Video","Create professional AI presenter videos.","synthesia.io","Paid","Beginner",4.6,"Avatar,Training,Video"],
+["InVideo AI","Video","Create complete videos using AI prompts.","invideo.io","Freemium","Beginner",4.6,"Video,Marketing,Social"],
+["Descript","Video","AI-powered audio and video editing.","descript.com","Freemium","Intermediate",4.6,"Video,Audio,Editing"],
+["CapCut","Video","Video editor with AI-powered creative features.","capcut.com","Freemium","Beginner",4.7,"Video,Editing,Social"],
+["VEED","Video","Online video editor with AI tools.","veed.io","Freemium","Beginner",4.5,"Video,Editing"],
+["Opus Clip","Video","Turn long videos into short viral clips.","opus.pro","Freemium","Beginner",4.6,"Shorts,Clips,Social"],
+["D-ID","Video","Generate talking digital humans with AI.","d-id.com","Freemium","Intermediate",4.4,"Avatar,Video"],
 
-    {
-        name:"ElevenLabs",
-        category:"Audio",
-        description:"AI voice platform for realistic speech generation and voice applications.",
-        image:"https://cdn.simpleicons.org/elevenlabs/ffffff",
-        website:"https://elevenlabs.io",
-        pricing:"Freemium",
-        level:"Beginner",
-        rating:4.8,
-        tags:["Voice","Audio","Speech"]
-    },
+/* AUDIO */
 
-    {
-        name:"Suno",
-        category:"Audio",
-        description:"Create songs and music using generative artificial intelligence.",
-        image:"https://cdn.simpleicons.org/suno/ffffff",
-        website:"https://suno.com",
-        pricing:"Freemium",
-        level:"Beginner",
-        rating:4.7,
-        tags:["Music","Songs","Audio"]
-    },
+["ElevenLabs","Audio","Realistic AI voice generation and audio tools.","elevenlabs.io","Freemium","Beginner",4.8,"Voice,Audio,Speech"],
+["Suno","Audio","Generate complete songs using AI.","suno.com","Freemium","Beginner",4.7,"Music,Songs,Audio"],
+["Udio","Audio","AI music generation platform.","udio.com","Freemium","Beginner",4.7,"Music,Generation"],
+["Murf","Audio","AI voiceovers for videos and presentations.","murf.ai","Freemium","Beginner",4.6,"Voice,Voiceover"],
+["PlayHT","Audio","AI voice generation and text-to-speech.","play.ht","Freemium","Intermediate",4.5,"Voice,TTS"],
+["Adobe Podcast","Audio","AI-powered audio enhancement and podcast tools.","podcast.adobe.com","Freemium","Beginner",4.7,"Podcast,Audio"],
+["AIVA","Audio","AI music composition platform.","aiva.ai","Freemium","Intermediate",4.4,"Music,Composition"],
+["Soundraw","Audio","Generate royalty-free music with AI.","soundraw.io","Paid","Beginner",4.5,"Music,Creator"],
 
-    {
-        name:"Grammarly",
-        category:"Writing",
-        description:"AI writing assistant for grammar, clarity, tone and communication.",
-        image:"https://cdn.simpleicons.org/grammarly/15C39A",
-        website:"https://www.grammarly.com",
-        pricing:"Freemium",
-        level:"Beginner",
-        rating:4.6,
-        tags:["Writing","Grammar","Work"]
-    },
+/* WRITING */
 
-    {
-        name:"Notion AI",
-        category:"Productivity",
-        description:"AI features for writing, organizing information and productivity.",
-        image:"https://cdn.simpleicons.org/notion/ffffff",
-        website:"https://www.notion.so/product/ai",
-        pricing:"Paid",
-        level:"Beginner",
-        rating:4.6,
-        tags:["Notes","Productivity","Work"]
-    },
+["Grammarly","Writing","AI writing assistant for grammar, tone and clarity.","grammarly.com","Freemium","Beginner",4.6,"Writing,Grammar"],
+["Jasper","Writing","AI marketing and content platform.","jasper.ai","Paid","Intermediate",4.5,"Marketing,Writing"],
+["Copy.ai","Writing","AI platform for marketing and sales content.","copy.ai","Freemium","Beginner",4.5,"Marketing,Copy"],
+["Writesonic","Writing","AI writing and content creation platform.","writesonic.com","Freemium","Beginner",4.5,"Writing,SEO"],
+["QuillBot","Writing","Paraphrasing, summarizing and writing assistant.","quillbot.com","Freemium","Beginner",4.5,"Writing,Paraphrase"],
+["Rytr","Writing","AI writing assistant for content creation.","rytr.me","Freemium","Beginner",4.4,"Writing,Content"],
+["Sudowrite","Writing","Creative writing assistant for authors.","sudowrite.com","Paid","Intermediate",4.5,"Writing,Stories"],
+["Wordtune","Writing","AI rewriting and writing improvement tool.","wordtune.com","Freemium","Beginner",4.4,"Writing,Rewrite"],
 
-    {
-        name:"Canva",
-        category:"Design",
-        description:"Design platform with powerful AI features for visual content creation.",
-        image:"https://cdn.simpleicons.org/canva/00C4CC",
-        website:"https://www.canva.com",
-        pricing:"Freemium",
-        level:"Beginner",
-        rating:4.7,
-        tags:["Design","Presentation","Images"]
-    },
+/* EDUCATION */
 
-    {
-        name:"NotebookLM",
-        category:"Education",
-        description:"AI research and learning assistant that works with your sources.",
-        image:"https://cdn.simpleicons.org/googlegemini/4285F4",
-        website:"https://notebooklm.google.com",
-        pricing:"Free",
-        level:"Beginner",
-        rating:4.8,
-        tags:["Study","Research","Learning"]
-    },
+["NotebookLM","Education","Research and learning assistant based on your sources.","notebooklm.google.com","Free","Beginner",4.8,"Study,Research,Learning"],
+["WolframAlpha","Education","Computational engine for mathematics and science.","wolframalpha.com","Freemium","Intermediate",4.7,"Math,Science"],
+["Khanmigo","Education","AI learning assistant from Khan Academy.","khanacademy.org","Paid","Beginner",4.6,"Education,Tutor"],
+["Photomath","Education","AI-powered mathematics problem solver.","photomath.com","Freemium","Beginner",4.5,"Math,Homework"],
+["Quizlet","Education","AI study and flashcard platform.","quizlet.com","Freemium","Beginner",4.5,"Study,Flashcards"],
+["Gamma","Education","AI presentation and document creation.","gamma.app","Freemium","Beginner",4.7,"Presentation,Education"],
+["Consensus","Research","AI research engine for scientific papers.","consensus.app","Freemium","Intermediate",4.6,"Research,Papers,Science"],
+["Elicit","Research","AI research assistant for academic literature.","elicit.com","Freemium","Advanced",4.6,"Research,Papers"],
 
-    {
-        name:"Wolfram Alpha",
-        category:"Education",
-        description:"Computational intelligence engine for mathematics, science and data.",
-        image:"https://cdn.simpleicons.org/wolframmathematica/dd1100",
-        website:"https://www.wolframalpha.com",
-        pricing:"Freemium",
-        level:"Intermediate",
-        rating:4.7,
-        tags:["Math","Science","Education"]
-    },
+/* RESEARCH */
 
-    {
-        name:"Hugging Face",
-        category:"Coding",
-        description:"Open AI community and platform for models, datasets and machine learning.",
-        image:"https://cdn.simpleicons.org/huggingface/FFD21E",
-        website:"https://huggingface.co",
-        pricing:"Free",
-        level:"Advanced",
-        rating:4.8,
-        tags:["ML","Models","Open Source"]
-    },
+["Semantic Scholar","Research","AI-powered scientific literature search.","semanticscholar.org","Free","Intermediate",4.6,"Papers,Research"],
+["Scite","Research","Discover and evaluate scientific citations.","scite.ai","Freemium","Advanced",4.6,"Research,Citations"],
+["ResearchRabbit","Research","Visual tool for discovering academic literature.","researchrabbit.ai","Free","Intermediate",4.5,"Research,Papers"],
+["Connected Papers","Research","Visual exploration of related research papers.","connectedpapers.com","Freemium","Intermediate",4.5,"Papers,Research"],
+["Elicit","Research","Research workflow assistant powered by AI.","elicit.com","Freemium","Advanced",4.6,"Research,Academic"],
 
-    {
-        name:"Zapier AI",
-        category:"Business",
-        description:"Automate workflows and connect applications with AI.",
-        image:"https://cdn.simpleicons.org/zapier/FF4F00",
-        website:"https://zapier.com",
-        pricing:"Freemium",
-        level:"Intermediate",
-        rating:4.5,
-        tags:["Automation","Business","Workflow"]
-    },
+/* DESIGN */
 
-    {
-        name:"Otter.ai",
-        category:"Productivity",
-        description:"AI meeting assistant for transcription, notes and summaries.",
-        image:"https://cdn.simpleicons.org/otter/3D7EFF",
-        website:"https://otter.ai",
-        pricing:"Freemium",
-        level:"Beginner",
-        rating:4.5,
-        tags:["Meetings","Transcription","Notes"]
-    },
+["Canva","Design","Visual design platform with AI creation tools.","canva.com","Freemium","Beginner",4.7,"Design,Graphics"],
+["Figma","Design","Collaborative design platform with AI features.","figma.com","Freemium","Intermediate",4.7,"UI,UX,Design"],
+["Framer","Design","Design and publish modern websites with AI.","framer.com","Freemium","Intermediate",4.6,"Web,Design"],
+["Uizard","Design","Generate UI designs and prototypes with AI.","uizard.io","Freemium","Beginner",4.5,"UI,Prototype"],
+["Looka","Design","AI logo and brand identity generator.","looka.com","Paid","Beginner",4.4,"Logo,Branding"],
+["Khroma","Design","AI-powered color palette generator.","khroma.co","Free","Beginner",4.3,"Color,Design"],
+["Diagram","Design","AI tools for product and interface design.","diagram.com","Paid","Intermediate",4.4,"UI,Design"],
 
-    {
-        name:"DeepL",
-        category:"Writing",
-        description:"AI translation and writing tools for natural multilingual communication.",
-        image:"https://cdn.simpleicons.org/deepl/0F2B46",
-        website:"https://www.deepl.com",
-        pricing:"Freemium",
-        level:"Beginner",
-        rating:4.8,
-        tags:["Translation","Language","Writing"]
-    }
+/* BUSINESS */
+
+["HubSpot AI","Business","AI features for CRM, marketing and sales.","hubspot.com","Freemium","Intermediate",4.6,"CRM,Marketing,Sales"],
+["Zapier","Business","Automation platform enhanced with AI.","zapier.com","Freemium","Intermediate",4.6,"Automation,Workflow"],
+["Make","Business","Visual workflow automation with AI integrations.","make.com","Freemium","Intermediate",4.6,"Automation,Workflow"],
+["Clay","Business","AI-powered prospecting and data enrichment.","clay.com","Paid","Advanced",4.6,"Sales,Data,Marketing"],
+["Apollo","Business","Sales intelligence and AI-powered prospecting.","apollo.io","Freemium","Intermediate",4.5,"Sales,Leads"],
+["Gamma","Business","Generate presentations, documents and websites with AI.","gamma.app","Freemium","Beginner",4.7,"Presentation,Documents"],
+["Tome","Business","AI-powered storytelling and presentations.","tome.app","Freemium","Beginner",4.4,"Presentation,Storytelling"],
+
+/* PRODUCTIVITY */
+
+["Notion AI","Productivity","AI-powered workspace for notes and knowledge.","notion.so","Paid","Beginner",4.6,"Notes,Productivity"],
+["Otter.ai","Productivity","AI meeting transcription and summaries.","otter.ai","Freemium","Beginner",4.5,"Meetings,Notes"],
+["Fireflies.ai","Productivity","AI meeting assistant for transcription and insights.","fireflies.ai","Freemium","Beginner",4.6,"Meetings,Transcription"],
+["Mem","Productivity","AI-powered personal knowledge workspace.","mem.ai","Paid","Intermediate",4.4,"Knowledge,Notes"],
+["Rewind","Productivity","AI assistant that helps search your digital history.","rewind.ai","Paid","Intermediate",4.3,"Memory,Productivity"],
+["Motion","Productivity","AI planning and calendar management assistant.","usemotion.com","Paid","Intermediate",4.5,"Planning,Calendar"],
+
+/* DATA */
+
+["Dataiku","Data","AI and analytics platform for teams.","dataiku.com","Paid","Advanced",4.5,"Data,Analytics"],
+["DataRobot","Data","Enterprise AI and machine learning platform.","datarobot.com","Paid","Advanced",4.5,"ML,Enterprise"],
+["Obviously AI","Data","No-code predictive analytics platform.","obviously.ai","Paid","Intermediate",4.3,"Prediction,No-Code"],
+["Julius AI","Data","AI data analyst for spreadsheets and datasets.","julius.ai","Freemium","Intermediate",4.5,"Data,Analysis"],
+["Rows","Data","AI-powered spreadsheets and data workflows.","rows.com","Freemium","Intermediate",4.4,"Spreadsheet,Data"],
+
+/* SEO */
+
+["Surfer","SEO","AI-powered SEO content optimization platform.","surferseo.com","Paid","Intermediate",4.5,"SEO,Content"],
+["Frase","SEO","AI SEO research and content optimization.","frase.io","Paid","Intermediate",4.4,"SEO,Writing"],
+["Scalenut","SEO","AI-powered SEO and content marketing platform.","scalenut.com","Paid","Intermediate",4.4,"SEO,Content"],
+["NeuronWriter","SEO","AI-assisted SEO content optimization.","neuronwriter.com","Paid","Intermediate",4.3,"SEO,Writing"],
+
+/* PRESENTATIONS */
+
+["Beautiful.ai","Presentation","Create professional presentations with AI assistance.","beautiful.ai","Paid","Beginner",4.5,"Slides,Presentation"],
+["SlidesAI","Presentation","Generate presentation slides from text.","slidesai.io","Freemium","Beginner",4.4,"Slides,Google"],
+["Plus AI","Presentation","AI presentation assistant for Google Slides and PowerPoint.","plusdocs.com","Paid","Intermediate",4.4,"Slides,Office"],
+
+/* 3D */
+
+["Meshy","3D","Generate 3D assets and models using AI.","meshy.ai","Freemium","Intermediate",4.6,"3D,Models"],
+["Tripo AI","3D","Generate 3D models from text and images.","tripo3d.ai","Freemium","Intermediate",4.5,"3D,Generation"],
+["Spline","3D","Collaborative 3D design with AI features.","spline.design","Freemium","Intermediate",4.5,"3D,Design"],
+
+/* OPEN SOURCE / ML */
+
+["Hugging Face","AI Development","Community platform for AI models and datasets.","huggingface.co","Free","Advanced",4.8,"Models,ML,Open Source"],
+["Replicate","AI Development","Run machine learning models through APIs.","replicate.com","Paid","Advanced",4.7,"API,Models,ML"],
+["Together AI","AI Development","Cloud platform for open AI models.","together.ai","Paid","Advanced",4.6,"LLM,API,Cloud"],
+["Groq","AI Development","Fast inference platform for AI models.","groq.com","Freemium","Advanced",4.7,"Inference,API,LLM"],
+["OpenRouter","AI Development","Unified API for many AI models.","openrouter.ai","Paid","Advanced",4.7,"API,LLM,Models"],
+["Ollama","AI Development","Run open AI models locally.","ollama.com","Free","Advanced",4.8,"Local,LLM,Open Source"],
+
+/* TRANSLATION */
+
+["DeepL","Translation","High-quality AI translation and writing tools.","deepl.com","Freemium","Beginner",4.8,"Translation,Language"],
+["Google Translate","Translation","Multilingual translation powered by Google AI.","translate.google.com","Free","Beginner",4.6,"Translation,Language"],
+["Papago","Translation","AI translation service from Naver.","papago.naver.com","Free","Beginner",4.5,"Translation,Language"],
+
+/* HEALTH */
+
+["Ada Health","Healthcare","AI-powered health information and assessment platform.","ada.com","Free","Beginner",4.3,"Health,Assistant"],
+["Glass Health","Healthcare","AI clinical decision support platform.","glass.health","Paid","Advanced",4.4,"Medicine,Clinical"],
+["Abridge","Healthcare","AI clinical documentation assistant.","abridge.com","Paid","Advanced",4.5,"Healthcare,Documentation"],
+
+/* CYBERSECURITY */
+
+["CrowdStrike Charlotte AI","Cybersecurity","AI capabilities for cybersecurity operations.","crowdstrike.com","Paid","Advanced",4.5,"Security,Threats"],
+["Microsoft Security Copilot","Cybersecurity","AI assistant for security teams.","microsoft.com","Paid","Advanced",4.5,"Security,Microsoft"],
+["Darktrace","Cybersecurity","AI-powered cyber threat detection and response.","darktrace.com","Paid","Advanced",4.4,"Security,Detection"],
+
+/* VOICE / TRANSCRIPTION */
+
+["AssemblyAI","Audio","Speech recognition and audio intelligence APIs.","assemblyai.com","Paid","Advanced",4.6,"Speech,API,Transcription"],
+["Deepgram","Audio","Speech AI APIs for developers.","deepgram.com","Paid","Advanced",4.6,"Speech,API"],
+["Whisper","Audio","Open-source speech recognition model from OpenAI.","openai.com","Free","Advanced",4.7,"Speech,Open Source"],
+
+/* MARKETING */
+
+["AdCreative.ai","Marketing","Generate high-performing advertising creatives with AI.","adcreative.ai","Paid","Intermediate",4.4,"Ads,Marketing"],
+["Predis.ai","Marketing","AI social media content and marketing assistant.","predis.ai","Freemium","Beginner",4.4,"Social,Marketing"],
+["Ocoya","Marketing","AI-powered social media management and content creation.","ocoya.com","Paid","Intermediate",4.3,"Social,Marketing"],
+["Taplio","Marketing","AI LinkedIn content and growth assistant.","taplio.com","Paid","Beginner",4.4,"LinkedIn,Marketing"],
+
+/* RESUME / CAREER */
+
+["Teal","Career","AI-powered resume and job search platform.","tealhq.com","Freemium","Beginner",4.5,"Resume,Career"],
+["Kickresume","Career","AI resume and cover letter builder.","kickresume.com","Freemium","Beginner",4.4,"Resume,Jobs"],
+["Rezi","Career","AI resume builder optimized for job applications.","rezi.ai","Freemium","Beginner",4.5,"Resume,Career"],
+
+/* LEGAL */
+
+["Harvey","Legal","AI platform designed for professional legal workflows.","harvey.ai","Paid","Advanced",4.5,"Legal,Research"],
+["Spellbook","Legal","AI contract drafting and review assistant.","spellbook.legal","Paid","Advanced",4.4,"Legal,Contracts"],
+["CoCounsel","Legal","AI legal assistant for professional workflows.","thomsonreuters.com","Paid","Advanced",4.5,"Legal,Research"],
+
+/* CUSTOMER SERVICE */
+
+["Intercom Fin","Customer Service","AI agent for customer support conversations.","intercom.com","Paid","Intermediate",4.5,"Support,AI Agent"],
+["Zendesk AI","Customer Service","AI-powered customer service platform.","zendesk.com","Paid","Intermediate",4.4,"Support,CRM"],
+["Ada","Customer Service","AI customer service automation platform.","ada.cx","Paid","Intermediate",4.4,"Support,Automation"],
+
+/* AGENTS */
+
+["AutoGPT","AI Agents","Open-source autonomous AI agent project.","agpt.co","Free","Advanced",4.2,"Agents,Open Source"],
+["CrewAI","AI Agents","Framework for building multi-agent AI systems.","crewai.com","Free","Advanced",4.6,"Agents,Python"],
+["LangChain","AI Agents","Framework for building applications with language models.","langchain.com","Free","Advanced",4.7,"LLM,Agents,Development"],
+["n8n","Automation","Workflow automation platform with AI capabilities.","n8n.io","Free","Intermediate",4.7,"Automation,AI,Workflow"],
+
+/* OTHER */
+
+["Character.AI","Entertainment","Interactive AI characters and conversations.","character.ai","Freemium","Beginner",4.5,"Characters,Chat"],
+["Sora","Video","AI video generation technology from OpenAI.","openai.com","Paid","Intermediate",4.7,"Video,Generation"],
+["DALL-E","Image","AI image generation from text prompts.","openai.com","Paid","Beginner",4.7,"Image,Generation"],
+["OpenAI API","AI Development","API platform for building AI applications.","openai.com","Paid","Advanced",4.9,"API,AI,Development"]
 
 ];
 
 
-/* =====================================================
+/* =========================================================
+   CREATE TOOL OBJECTS
+========================================================= */
+
+const tools = rawTools.map(item => {
+
+    const [
+        name,
+        category,
+        description,
+        domain,
+        pricing,
+        level,
+        rating,
+        tags
+    ] = item;
+
+    return {
+        name,
+        category,
+        description,
+        domain,
+        pricing,
+        level,
+        rating,
+        tags:tags.split(","),
+        image:
+        `https://www.google.com/s2/favicons?domain=${domain}&sz=128`,
+        url:
+        domain.startsWith("http")
+        ? domain
+        : `https://${domain}`
+    };
+
+});
+
+
+/* =========================================================
    STATE
-   ===================================================== */
+========================================================= */
 
 let selectedCategory = "All";
-let showFavorites = false;
-
 let favorites =
-    JSON.parse(localStorage.getItem("ailmaasFavorites")) || [];
+    JSON.parse(
+        localStorage.getItem("ailmaasFavorites")
+    ) || [];
+
+let showFavorites = false;
+let visibleCount = 40;
 
 
-/* =====================================================
+/* =========================================================
    ELEMENTS
-   ===================================================== */
+========================================================= */
 
-const grid = document.getElementById("toolsGrid");
-const search = document.getElementById("search");
-const pricing = document.getElementById("pricingFilter");
-const level = document.getElementById("levelFilter");
-const sort = document.getElementById("sortFilter");
-const favoriteButton = document.getElementById("favoritesFilter");
-const empty = document.getElementById("empty");
+const grid =
+    document.getElementById("grid");
+
+const search =
+    document.getElementById("search");
+
+const pricing =
+    document.getElementById("pricing");
+
+const level =
+    document.getElementById("level");
+
+const sort =
+    document.getElementById("sort");
+
+const empty =
+    document.getElementById("empty");
+
+const loadMore =
+    document.getElementById("loadMore");
 
 
-/* =====================================================
-   RENDER
-   ===================================================== */
+/* =========================================================
+   CATEGORIES
+========================================================= */
 
-function renderTools(){
+const categoryBox =
+    document.getElementById("categories");
 
-    let tools = [...aiTools];
+const categories =
+    ["All",...new Set(
+        tools.map(tool => tool.category)
+    )];
+
+categories.forEach(category => {
+
+    const button =
+        document.createElement("button");
+
+    button.className =
+        "category" +
+        (category === "All" ? " active" : "");
+
+    button.textContent =
+        category === "All"
+        ? "🌎 All"
+        : category;
+
+    button.dataset.category =
+        category;
+
+    button.onclick = () => {
+
+        document
+        .querySelectorAll(".category")
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        selectedCategory =
+            category;
+
+        visibleCount = 40;
+
+        render();
+
+    };
+
+    categoryBox.appendChild(button);
+
+});
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+function getFilteredTools(){
 
     const query =
-        search.value.toLowerCase().trim();
+        search.value
+        .toLowerCase()
+        .trim();
 
-    tools = tools.filter(tool => {
+    let result =
+        tools.filter(tool => {
 
-        const searchable = [
+            const searchable = [
 
-            tool.name,
-            tool.category,
-            tool.description,
-            ...tool.tags
+                tool.name,
+                tool.category,
+                tool.description,
+                ...tool.tags
 
-        ].join(" ").toLowerCase();
+            ]
+            .join(" ")
+            .toLowerCase();
 
-        return searchable.includes(query);
+            return searchable.includes(query);
 
-    });
+        });
 
 
     if(selectedCategory !== "All"){
 
-        tools = tools.filter(
-            tool => tool.category === selectedCategory
-        );
+        result =
+            result.filter(
+                tool =>
+                tool.category === selectedCategory
+            );
 
     }
 
 
     if(pricing.value !== "All"){
 
-        tools = tools.filter(
-            tool => tool.pricing === pricing.value
-        );
+        result =
+            result.filter(
+                tool =>
+                tool.pricing === pricing.value
+            );
 
     }
 
 
     if(level.value !== "All"){
 
-        tools = tools.filter(
-            tool => tool.level === level.value
-        );
+        result =
+            result.filter(
+                tool =>
+                tool.level === level.value
+            );
 
     }
 
 
     if(showFavorites){
 
-        tools = tools.filter(
-            tool => favorites.includes(tool.name)
-        );
+        result =
+            result.filter(
+                tool =>
+                favorites.includes(tool.name)
+            );
 
     }
 
 
     if(sort.value === "rating"){
 
-        tools.sort(
-            (a,b) => b.rating - a.rating
+        result.sort(
+            (a,b) =>
+            b.rating - a.rating
         );
 
     }
+
 
     if(sort.value === "name"){
 
-        tools.sort(
-            (a,b) => a.name.localeCompare(b.name)
+        result.sort(
+            (a,b) =>
+            a.name.localeCompare(b.name)
         );
 
     }
+
+
+    return result;
+
+}
+
+
+/* =========================================================
+   RENDER
+========================================================= */
+
+function render(){
+
+    const result =
+        getFilteredTools();
+
+    const visible =
+        result.slice(
+            0,
+            visibleCount
+        );
 
 
     grid.innerHTML = "";
 
     empty.style.display =
-        tools.length ? "none" : "block";
+        result.length
+        ? "none"
+        : "block";
 
 
-    tools.forEach((tool,index)=>{
+    visible.forEach(
+        (tool,index) => {
 
-        const isFavorite =
-            favorites.includes(tool.name);
+            const card =
+                document.createElement("article");
 
-        const card =
-        document.createElement("article");
+            card.className =
+                "card";
 
-        card.className = "tool-card";
-
-        card.style.animationDelay =
-            `${index * 35}ms`;
+            card.style.animationDelay =
+                `${index * 20}ms`;
 
 
-        card.innerHTML = `
+            const isFavorite =
+                favorites.includes(
+                    tool.name
+                );
 
-            <div class="tool-top">
 
-                <img
-                    class="tool-logo"
-                    src="${tool.image}"
-                    alt="${tool.name} logo"
-                    loading="lazy"
-                    onerror="this.src='https://dummyimage.com/100x100/151525/ffffff&text=AI'"
+            card.innerHTML = `
+
+                <div class="cardTop">
+
+                    <img
+                        class="toolLogo"
+                        src="${tool.image}"
+                        alt="${tool.name}"
+                        loading="lazy"
+                        onerror="
+                        this.src=
+                        'https://dummyimage.com/128x128/151525/ffffff&text=AI'
+                        "
+                    >
+
+                    <button
+                        class="heart ${isFavorite ? "active" : ""}"
+                        onclick="
+                        toggleFavorite('${escapeName(tool.name)}')
+                        "
+                    >
+                        ${isFavorite ? "♥" : "♡"}
+                    </button>
+
+                </div>
+
+
+                <h3>
+                    ${tool.name}
+                </h3>
+
+
+                <p class="description">
+                    ${tool.description}
+                </p>
+
+
+                <div class="tags">
+
+                    ${tool.tags
+                        .map(
+                            tag =>
+                            `<span class="tag">
+                                ${tag}
+                            </span>`
+                        )
+                        .join("")
+                    }
+
+                </div>
+
+
+                <div class="bottom">
+
+                    <span class="rating">
+                        ★ ${tool.rating}
+                    </span>
+
+                    <span class="price">
+                        ${tool.pricing}
+                    </span>
+
+                </div>
+
+
+                <a
+                    class="visit"
+                    href="${tool.url}"
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
+                    Visit Tool →
+                </a>
 
-                <button
-                    class="favorite ${isFavorite ? "active":""}"
-                    onclick="toggleFavorite('${tool.name}')"
-                    aria-label="Favorite"
-                >
-                    ${isFavorite ? "♥" : "♡"}
-                </button>
+            `;
 
-            </div>
 
-            <h3>${tool.name}</h3>
+            grid.appendChild(card);
 
-            <p>${tool.description}</p>
+        }
+    );
 
-            <div class="tags">
 
-                ${tool.tags.map(
-                    tag => `<span class="tag">${tag}</span>`
-                ).join("")}
-
-            </div>
-
-            <div class="tool-bottom">
-
-                <span class="rating">
-                    ★ ${tool.rating}
-                </span>
-
-                <span class="price">
-                    ${tool.pricing}
-                </span>
-
-            </div>
-
-            <a
-                class="visit"
-                href="${tool.website}"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Visit Tool →
-            </a>
-
-        `;
-
-        grid.appendChild(card);
-
-    });
+    loadMore.style.display =
+        visible.length < result.length
+        ? "block"
+        : "none";
 
 }
 
 
-/* =====================================================
+/* =========================================================
    FAVORITES
-   ===================================================== */
+========================================================= */
+
+function escapeName(name){
+
+    return name
+        .replaceAll("'","\\'");
+}
+
 
 function toggleFavorite(name){
 
     if(favorites.includes(name)){
 
         favorites =
-            favorites.filter(item => item !== name);
+            favorites.filter(
+                item => item !== name
+            );
 
     }else{
 
@@ -1248,97 +1414,124 @@ function toggleFavorite(name){
 
     }
 
+
     localStorage.setItem(
         "ailmaasFavorites",
         JSON.stringify(favorites)
     );
 
-    renderTools();
+    render();
 
 }
 
 
-/* =====================================================
-   CATEGORY FILTER
-   ===================================================== */
-
-document.querySelectorAll(".category")
-.forEach(button => {
-
-    button.addEventListener("click",()=>{
-
-        document
-        .querySelectorAll(".category")
-        .forEach(item =>
-            item.classList.remove("active")
-        );
-
-        button.classList.add("active");
-
-        selectedCategory =
-            button.dataset.category;
-
-        renderTools();
-
-    });
-
-});
-
-
-/* =====================================================
+/* =========================================================
    EVENTS
-   ===================================================== */
+========================================================= */
 
 search.addEventListener(
     "input",
-    renderTools
-);
+    () => {
 
-pricing.addEventListener(
-    "change",
-    renderTools
-);
+        visibleCount = 40;
 
-level.addEventListener(
-    "change",
-    renderTools
-);
-
-sort.addEventListener(
-    "change",
-    renderTools
-);
-
-favoriteButton.addEventListener(
-    "click",
-    ()=>{
-
-        showFavorites = !showFavorites;
-
-        favoriteButton.classList.toggle(
-            "active",
-            showFavorites
-        );
-
-        renderTools();
+        render();
 
     }
 );
 
 
-/* =====================================================
-   TOOL COUNT
-   ===================================================== */
+pricing.addEventListener(
+    "change",
+    () => {
 
-document.getElementById("toolCount")
-.textContent = `${aiTools.length}+`;
+        visibleCount = 40;
+
+        render();
+
+    }
+);
 
 
-/* =====================================================
-   INITIALIZE
-   ===================================================== */
+level.addEventListener(
+    "change",
+    () => {
 
-renderTools();
+        visibleCount = 40;
+
+        render();
+
+    }
+);
+
+
+sort.addEventListener(
+    "change",
+    () => {
+
+        visibleCount = 40;
+
+        render();
+
+    }
+);
+
+
+document
+.getElementById("favorites")
+.addEventListener(
+    "click",
+    function(){
+
+        showFavorites =
+            !showFavorites;
+
+        this.classList.toggle(
+            "active",
+            showFavorites
+        );
+
+        visibleCount = 40;
+
+        render();
+
+    }
+);
+
+
+loadMore.addEventListener(
+    "click",
+    () => {
+
+        visibleCount += 40;
+
+        render();
+
+    }
+);
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+document
+.getElementById("totalTools")
+.textContent =
+`${tools.length}+`;
+
+
+document
+.getElementById("totalCategories")
+.textContent =
+`${categories.length - 1}+`;
+
+
+/* =========================================================
+   START
+========================================================= */
+
+render();
 
 </script>
 
