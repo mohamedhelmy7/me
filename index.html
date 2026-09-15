@@ -1,305 +1,507 @@
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Stars Explorer</title>
+    <title>مِشكاة | مكتبة التراث العربي والإسلامي</title>
 
     <style>
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background:
-                radial-gradient(circle at 20% 20%, #1c2b5a 0, transparent 25%),
-                radial-gradient(circle at 80% 30%, #24144d 0, transparent 25%),
-                #030712;
-            color: white;
-            min-height: 100vh;
+            font-family: "Tahoma", Arial, sans-serif;
+            background: #f7f3ea;
+            color: #29251f;
+            line-height: 1.7;
         }
+
+        /* ================= HEADER ================= */
 
         header {
-            text-align: center;
-            padding: 50px 20px 30px;
-        }
+            background:
+                linear-gradient(rgba(28, 25, 20, 0.88), rgba(28, 25, 20, 0.88)),
+                url("https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=1600&q=80");
 
-        header .big-star {
-            font-size: 70px;
-        }
+            background-size: cover;
+            background-position: center;
 
-        h1 {
-            color: #ffd700;
-            margin: 10px 0;
-            font-size: 42px;
-        }
-
-        header p {
-            color: #cbd5e1;
-            font-size: 18px;
-        }
-
-        .search-box {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            padding: 20px;
-            flex-wrap: wrap;
-        }
-
-        input {
-            width: min(450px, 90%);
-            padding: 14px 18px;
-            border-radius: 10px;
-            border: 1px solid #475569;
-            background: #111827;
             color: white;
-            font-size: 16px;
-            outline: none;
+            min-height: 570px;
+            display: flex;
+            flex-direction: column;
         }
 
-        button {
-            padding: 14px 22px;
-            border: none;
-            border-radius: 10px;
-            background: #ffd700;
-            color: #111827;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: white;
-        }
-
-        .examples {
-            text-align: center;
-            color: #94a3b8;
-            margin-bottom: 30px;
-        }
-
-        .examples span {
-            color: #ffd700;
-            cursor: pointer;
-            margin: 0 6px;
-        }
-
-        .container {
-            width: min(1100px, 92%);
+        nav {
+            width: 90%;
+            max-width: 1200px;
             margin: auto;
+            padding: 25px 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .loading {
-            text-align: center;
-            padding: 30px;
-            color: #ffd700;
-            display: none;
-        }
-
-        .error {
-            background: #3f1212;
-            border: 1px solid #ef4444;
-            color: #fecaca;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
-            display: none;
-        }
-
-        .info-card {
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid #334155;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-        }
-
-        .info-card h2 {
-            color: #ffd700;
-            margin-top: 0;
+        .logo {
             font-size: 30px;
+            font-weight: bold;
+            color: #d6ad60;
         }
 
-        .star-info {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
+        nav ul {
+            list-style: none;
+            display: flex;
             gap: 25px;
         }
 
-        .star-image {
-            width: 100%;
-            max-height: 350px;
-            object-fit: cover;
-            border-radius: 12px;
-            background: #111827;
-        }
-
-        .description {
-            color: #dbeafe;
-            line-height: 1.8;
-            font-size: 17px;
-        }
-
-        .read-more {
-            display: inline-block;
-            margin-top: 10px;
-            color: #ffd700;
+        nav a {
+            color: white;
             text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #d6ad60;
+        }
+
+        .hero {
+            width: 90%;
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            padding-bottom: 70px;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            color: #d6ad60;
+            margin-bottom: 10px;
+        }
+
+        .hero h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #ddd;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .search {
+            background: white;
+            padding: 8px;
+            border-radius: 14px;
+
+            display: flex;
+            max-width: 750px;
+            margin: auto;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        .search input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 16px;
+            font-size: 17px;
+            color: #333;
+        }
+
+        .search button {
+            border: none;
+            background: #b48a45;
+            color: white;
+            padding: 0 28px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .search button:hover {
+            background: #8f6c35;
+        }
+
+        /* ================= MAIN ================= */
+
+        main {
+            width: 90%;
+            max-width: 1200px;
+            margin: 60px auto;
         }
 
         .section-title {
-            color: #ffd700;
             text-align: center;
-            margin: 40px 0 20px;
-            font-size: 30px;
+            margin-bottom: 35px;
         }
 
-        .fact {
+        .section-title h2 {
+            font-size: 32px;
+            color: #51452f;
+        }
+
+        .section-title p {
+            color: #777;
+        }
+
+        /* ================= CATEGORIES ================= */
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+            margin-bottom: 70px;
+        }
+
+        .category {
+            background: white;
+            padding: 25px 15px;
+            border-radius: 15px;
             text-align: center;
-            background: #111827;
-            border: 1px solid #334155;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            font-size: 18px;
-            color: #fef3c7;
+            cursor: pointer;
+
+            border: 1px solid #e4dccd;
+
+            transition: 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-6px);
+            border-color: #b48a45;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .category .icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .category h3 {
+            color: #51452f;
+        }
+
+        /* ================= BOOKS ================= */
+
+        #results {
+            display: none;
         }
 
         .books {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 25px;
         }
 
         .book {
-            background: #111827;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            padding: 15px;
-            transition: transform 0.2s;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+
+            border: 1px solid #e4dccd;
+
+            transition: 0.3s;
         }
 
         .book:hover {
-            transform: translateY(-5px);
+            transform: translateY(-7px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
         }
 
-        .book img {
+        .book-cover {
             width: 100%;
-            height: 260px;
+            height: 290px;
             object-fit: cover;
-            border-radius: 8px;
-            background: #1e293b;
+            background: #eee;
         }
 
-        .book h3 {
-            color: #ffd700;
+        .book-content {
+            padding: 18px;
+        }
+
+        .book-title {
+            color: #51452f;
             font-size: 18px;
+            margin-bottom: 8px;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        .book p {
-            color: #cbd5e1;
+        .author {
+            color: #777;
             font-size: 14px;
+            margin-bottom: 8px;
         }
 
-        .book a {
-            color: #60a5fa;
-            text-decoration: none;
+        .year {
+            color: #999;
+            font-size: 13px;
         }
+
+        .book-link {
+            display: inline-block;
+            margin-top: 12px;
+            color: #a17a3e;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* ================= LOADING ================= */
+
+        #loading {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            font-size: 20px;
+            color: #a17a3e;
+        }
+
+        #error {
+            display: none;
+            background: #ffe5e5;
+            color: #9b1c1c;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* ================= FEATURE ================= */
+
+        .feature {
+            background: #29251f;
+            color: white;
+            border-radius: 20px;
+            padding: 50px;
+
+            margin: 70px 0;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+
+            align-items: center;
+        }
+
+        .feature h2 {
+            color: #d6ad60;
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .feature p {
+            color: #ddd;
+            font-size: 17px;
+        }
+
+        .timeline {
+            border-right: 3px solid #b48a45;
+            padding-right: 25px;
+        }
+
+        .timeline-item {
+            margin-bottom: 18px;
+        }
+
+        .timeline-item strong {
+            color: #d6ad60;
+        }
+
+        /* ================= FOOTER ================= */
 
         footer {
+            background: #29251f;
+            color: #aaa;
             text-align: center;
-            color: #64748b;
-            padding: 50px 20px 30px;
+            padding: 35px;
         }
 
+        footer strong {
+            color: #d6ad60;
+        }
+
+        /* ================= MOBILE ================= */
+
         @media (max-width: 700px) {
-            h1 {
-                font-size: 32px;
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
             }
 
-            .star-info {
+            nav ul {
+                gap: 12px;
+                font-size: 13px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero h2 {
+                font-size: 22px;
+            }
+
+            .search {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .search button {
+                padding: 14px;
+            }
+
+            .feature {
                 grid-template-columns: 1fr;
-            }
-
-            .star-image {
-                max-height: 300px;
+                padding: 30px;
             }
         }
     </style>
 </head>
 
+
 <body>
 
+<!-- ================= HEADER ================= -->
+
 <header>
-    <div class="big-star">⭐</div>
 
-    <h1>Stars Explorer</h1>
+    <nav>
 
-    <p>
-        Discover stars, read about them, see images and find books about them.
-    </p>
+        <div class="logo">
+            مِشكاة
+        </div>
 
-    <div class="search-box">
-        <input
-            id="starInput"
-            type="text"
-            placeholder="Enter a star name e.g. Sirius"
-        >
+        <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#categories">الأقسام</a></li>
+            <li><a href="#books">الكتب</a></li>
+            <li><a href="#andalus">الأندلس</a></li>
+        </ul>
 
-        <button onclick="searchStar()">
-            Search Star
-        </button>
+    </nav>
+
+
+    <div class="hero" id="home">
+
+        <h1>مِشكاة</h1>
+
+        <h2>
+            مكتبة التراث العربي والإسلامي
+        </h2>
+
+        <p>
+            اكتشف الكتب، المؤلفين، التاريخ، والفكر العربي والإسلامي.
+        </p>
+
+
+        <div class="search">
+
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="ابحث عن كتاب أو مؤلف أو موضوع..."
+            >
+
+            <button onclick="searchBooks()">
+                🔎 بحث
+            </button>
+
+        </div>
+
     </div>
 
-    <div class="examples">
-        Try:
-        <span onclick="searchExample('Sirius')">Sirius</span>
-        <span onclick="searchExample('Betelgeuse')">Betelgeuse</span>
-        <span onclick="searchExample('Vega')">Vega</span>
-        <span onclick="searchExample('Polaris')">Polaris</span>
-    </div>
 </header>
 
 
-<main class="container">
+<!-- ================= MAIN ================= -->
 
-    <div id="loading" class="loading">
-        🔭 Searching the universe...
-    </div>
+<main>
 
-    <div id="error" class="error"></div>
 
-    <section id="starSection" class="info-card" style="display:none;">
+    <!-- CATEGORIES -->
 
-        <h2 id="starName"></h2>
+    <section id="categories">
 
-        <div class="star-info">
+        <div class="section-title">
 
-            <div>
-                <img
-                    id="starImage"
-                    class="star-image"
-                    src=""
-                    alt="Star image"
-                >
+            <h2>
+                استكشف المكتبة
+            </h2>
+
+            <p>
+                اختر المجال الذي تريد القراءة فيه
+            </p>
+
+        </div>
+
+
+        <div class="categories">
+
+            <div
+                class="category"
+                onclick="searchCategory('Islam')"
+            >
+                <div class="icon">🕌</div>
+                <h3>الإسلام</h3>
             </div>
 
-            <div>
-                <p id="starDescription" class="description"></p>
 
-                <a
-                    id="wikiLink"
-                    class="read-more"
-                    href="#"
-                    target="_blank"
-                >
-                    Read more on Wikipedia →
-                </a>
+            <div
+                class="category"
+                onclick="searchCategory('Islamic history')"
+            >
+                <div class="icon">📜</div>
+                <h3>التاريخ الإسلامي</h3>
+            </div>
+
+
+            <div
+                class="category"
+                onclick="searchCategory('Al Andalus')"
+            >
+                <div class="icon">🇪🇸</div>
+                <h3>الأندلس</h3>
+            </div>
+
+
+            <div
+                class="category"
+                onclick="searchCategory('Arabic literature')"
+            >
+                <div class="icon">✒️</div>
+                <h3>الأدب العربي</h3>
+            </div>
+
+
+            <div
+                class="category"
+                onclick="searchCategory('Ibn Khaldun')"
+            >
+                <div class="icon">👤</div>
+                <h3>المؤرخون</h3>
+            </div>
+
+
+            <div
+                class="category"
+                onclick="searchCategory('Arabic philosophy')"
+            >
+                <div class="icon">🧠</div>
+                <h3>الفكر والفلسفة</h3>
             </div>
 
         </div>
@@ -307,373 +509,455 @@
     </section>
 
 
-    <section id="factSection" style="display:none;">
+    <!-- ANDALUS -->
 
-        <h2 class="section-title">
-            ✨ Star Fact
-        </h2>
+    <section class="feature" id="andalus">
 
-        <div id="fact" class="fact"></div>
+        <div>
 
-        <div style="text-align:center;">
-            <button onclick="showFact()">
-                Show Another Fact
+            <h2>
+                🇪🇸 الأندلس
+            </h2>
+
+            <p>
+                رحلة عبر تاريخ الأندلس، من الفتح الإسلامي
+                إلى سقوط غرناطة، من خلال الكتب والمؤرخين.
+            </p>
+
+            <br>
+
+            <button onclick="searchCategory('Al Andalus')">
+                استكشف كتب الأندلس
             </button>
+
+        </div>
+
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <strong>711م</strong>
+                — فتح الأندلس
+            </div>
+
+            <div class="timeline-item">
+                <strong>756م</strong>
+                — قيام الإمارة الأموية
+            </div>
+
+            <div class="timeline-item">
+                <strong>929م</strong>
+                — قيام الخلافة الأموية
+            </div>
+
+            <div class="timeline-item">
+                <strong>1031م</strong>
+                — عصر ملوك الطوائف
+            </div>
+
+            <div class="timeline-item">
+                <strong>1492م</strong>
+                — سقوط غرناطة
+            </div>
+
         </div>
 
     </section>
 
 
-    <section id="booksSection" style="display:none;">
+    <!-- RESULTS -->
 
-        <h2 class="section-title">
-            📚 Books Related to This Star
-        </h2>
+    <section id="results">
 
-        <div id="books" class="books"></div>
+        <div class="section-title">
+
+            <h2 id="resultsTitle">
+                نتائج البحث
+            </h2>
+
+            <p>
+                الكتب المتاحة من Open Library
+            </p>
+
+        </div>
+
+
+        <div id="loading">
+            🔎 جاري البحث...
+        </div>
+
+
+        <div id="error"></div>
+
+
+        <div
+            id="books"
+            class="books"
+        ></div>
 
     </section>
 
 </main>
 
 
+<!-- ================= FOOTER ================= -->
+
 <footer>
+
     <p>
-        Stars Explorer • Built with HTML, CSS & JavaScript
+        <strong>مِشكاة</strong>
+        — مكتبة التراث العربي والإسلامي
     </p>
 
     <p>
-        Data provided by Wikipedia and Open Library
+        بيانات الكتب من Open Library
     </p>
+
 </footer>
 
 
+<!-- ================= JAVASCRIPT ================= -->
+
 <script>
 
-    // --------------------------------------------------
-    // Global variables
-    // --------------------------------------------------
+    /*
+        ============================================
+        Open Library API
+        ============================================
 
-    let currentStar = "";
+        API Example:
 
-    const facts = [
-        "The Sun is a star.",
-        "Stars produce energy through nuclear fusion.",
-        "Some stars are many times larger than the Sun.",
-        "A star's color can tell us something about its temperature.",
-        "Stars can live for millions or billions of years.",
-        "The nearest star to Earth after the Sun is Proxima Centauri."
-    ];
+        https://openlibrary.org/search.json?q=Ibn+Khaldun
+
+        The API returns JSON.
+
+        We take the JSON data and display it
+        using our own HTML/CSS design.
+    */
 
 
-    // --------------------------------------------------
-    // Search Star
-    // --------------------------------------------------
+    async function searchBooks() {
 
-    async function searchStar() {
+        const input =
+            document.getElementById("searchInput");
 
-        const input = document.getElementById("starInput");
+        const query =
+            input.value.trim();
 
-        const starName = input.value.trim();
 
-        if (!starName) {
-            showError("Please enter a star name.");
+        if (!query) {
+
+            showError(
+                "من فضلك اكتب اسم كتاب أو مؤلف أو موضوع."
+            );
+
             return;
         }
 
-        currentStar = starName;
 
-        hideError();
+        searchAPI(query);
+    }
 
-        document.getElementById("loading").style.display = "block";
-        document.getElementById("starSection").style.display = "none";
-        document.getElementById("booksSection").style.display = "none";
-        document.getElementById("factSection").style.display = "none";
+
+
+    async function searchAPI(query) {
+
+        const results =
+            document.getElementById("results");
+
+        const loading =
+            document.getElementById("loading");
+
+        const books =
+            document.getElementById("books");
+
+        const error =
+            document.getElementById("error");
+
+
+        results.style.display = "block";
+
+        loading.style.display = "block";
+
+        books.innerHTML = "";
+
+        error.style.display = "none";
+
+
+        results.scrollIntoView({
+            behavior: "smooth"
+        });
+
 
         try {
 
-            // Wikipedia API
-            const wikipediaURL =
-                "https://en.wikipedia.org/api/rest_v1/page/summary/" +
-                encodeURIComponent(starName);
+            /*
+                Calling the API
+            */
 
-            const response = await fetch(wikipediaURL);
+            const response =
+                await fetch(
+                    "https://openlibrary.org/search.json?q=" +
+                    encodeURIComponent(query) +
+                    "&limit=20"
+                );
+
 
             if (!response.ok) {
+
                 throw new Error(
-                    "Star not found on Wikipedia."
+                    "API request failed"
                 );
             }
 
-            const data = await response.json();
 
-            displayStar(data);
+            /*
+                Convert API response to JSON
+            */
 
-            // Search books
-            await searchBooks(starName);
-
-            document.getElementById("factSection").style.display = "block";
-
-            showFact();
-
-        } catch (error) {
-
-            console.error(error);
-
-            showError(
-                "I couldn't find information about this star. " +
-                "Try another name such as Sirius, Vega or Polaris."
-            );
-
-        } finally {
-
-            document.getElementById("loading").style.display = "none";
-        }
-    }
+            const data =
+                await response.json();
 
 
-    // --------------------------------------------------
-    // Display Wikipedia information
-    // --------------------------------------------------
+            /*
+                data.docs contains books
+            */
 
-    function displayStar(data) {
+            if (
+                !data.docs ||
+                data.docs.length === 0
+            ) {
 
-        document.getElementById("starSection").style.display = "block";
-
-        document.getElementById("starName").textContent =
-            data.title || currentStar;
-
-        document.getElementById("starDescription").textContent =
-            data.extract ||
-            "No description available.";
-
-        const image = document.getElementById("starImage");
-
-        if (data.thumbnail && data.thumbnail.source) {
-
-            image.src = data.thumbnail.source;
-
-        } else {
-
-            image.src =
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Starsinthesky.jpg/640px-Starsinthesky.jpg";
-        }
-
-        const wikiLink =
-            document.getElementById("wikiLink");
-
-        wikiLink.href =
-            data.content_urls?.desktop?.page ||
-            "https://en.wikipedia.org/wiki/" +
-            encodeURIComponent(currentStar);
-    }
-
-
-    // --------------------------------------------------
-    // Search Books using Open Library API
-    // --------------------------------------------------
-
-    async function searchBooks(starName) {
-
-        const booksContainer =
-            document.getElementById("books");
-
-        booksContainer.innerHTML =
-            "<p>📚 Searching for books...</p>";
-
-        const url =
-            "https://openlibrary.org/search.json?q=" +
-            encodeURIComponent(starName) +
-            "&limit=8";
-
-        try {
-
-            const response = await fetch(url);
-
-            if (!response.ok) {
-                throw new Error("Book API error");
-            }
-
-            const data = await response.json();
-
-            booksContainer.innerHTML = "";
-
-            if (!data.docs || data.docs.length === 0) {
-
-                booksContainer.innerHTML =
-                    "<p>No books found for this star.</p>";
-
-                document.getElementById("booksSection")
-                    .style.display = "block";
+                showError(
+                    "لم يتم العثور على كتب."
+                );
 
                 return;
             }
 
 
-            data.docs.slice(0, 8).forEach(book => {
+            /*
+                Display books
+            */
 
-                const title =
-                    book.title || "Unknown title";
+            data.docs
+                .slice(0, 20)
+                .forEach(book => {
 
-                const author =
-                    book.author_name
-                        ? book.author_name[0]
-                        : "Unknown author";
+                    createBookCard(book);
 
-                const year =
-                    book.first_publish_year ||
-                    "Unknown year";
-
-                let cover =
-                    "https://via.placeholder.com/300x400?text=No+Cover";
-
-                if (book.cover_i) {
-
-                    cover =
-                        "https://covers.openlibrary.org/b/id/" +
-                        book.cover_i +
-                        "-M.jpg";
-                }
-
-                const key =
-                    book.key || "";
-
-                const bookURL =
-                    key
-                        ? "https://openlibrary.org" + key
-                        : "https://openlibrary.org/search?q=" +
-                          encodeURIComponent(title);
+                });
 
 
-                const card =
-                    document.createElement("div");
+        } catch (err) {
 
-                card.className = "book";
+            console.error(err);
 
-                card.innerHTML = `
-                    <img
-                        src="${cover}"
-                        alt="${escapeHTML(title)}"
-                    >
+            showError(
+                "حدث خطأ أثناء الاتصال بمصدر الكتب."
+            );
 
-                    <h3>
-                        ${escapeHTML(title)}
-                    </h3>
+        } finally {
 
-                    <p>
-                        <strong>Author:</strong>
-                        ${escapeHTML(author)}
-                    </p>
-
-                    <p>
-                        <strong>First published:</strong>
-                        ${year}
-                    </p>
-
-                    <a
-                        href="${bookURL}"
-                        target="_blank"
-                    >
-                        View book →
-                    </a>
-                `;
-
-                booksContainer.appendChild(card);
-            });
-
-            document.getElementById("booksSection")
-                .style.display = "block";
-
-        } catch (error) {
-
-            console.error(error);
-
-            booksContainer.innerHTML =
-                "<p>Could not load books right now.</p>";
-
-            document.getElementById("booksSection")
-                .style.display = "block";
+            loading.style.display = "none";
         }
+
     }
 
 
-    // --------------------------------------------------
-    // Random star fact
-    // --------------------------------------------------
 
-    function showFact() {
+    function createBookCard(book) {
 
-        const randomIndex =
-            Math.floor(Math.random() * facts.length);
+        const books =
+            document.getElementById("books");
 
-        document.getElementById("fact").textContent =
-            "✨ " + facts[randomIndex];
+
+        /*
+            Get book information
+            from JSON response
+        */
+
+        const title =
+            book.title ||
+            "بدون عنوان";
+
+
+        const author =
+            book.author_name
+                ? book.author_name.join("، ")
+                : "مؤلف غير معروف";
+
+
+        const year =
+            book.first_publish_year ||
+            "غير معروف";
+
+
+        /*
+            Open Library cover
+        */
+
+        let cover =
+            "https://via.placeholder.com/300x450?text=No+Cover";
+
+
+        if (book.cover_i) {
+
+            cover =
+                "https://covers.openlibrary.org/b/id/" +
+                book.cover_i +
+                "-L.jpg";
+
+        }
+
+
+        /*
+            Link to Open Library
+        */
+
+        let link =
+            "https://openlibrary.org";
+
+
+        if (book.key) {
+
+            link =
+                "https://openlibrary.org" +
+                book.key;
+
+        }
+
+
+        /*
+            Create HTML card
+        */
+
+        const card =
+            document.createElement("article");
+
+
+        card.className = "book";
+
+
+        card.innerHTML = `
+
+            <img
+                class="book-cover"
+                src="${cover}"
+                alt="${escapeHTML(title)}"
+                loading="lazy"
+            >
+
+            <div class="book-content">
+
+                <h3 class="book-title">
+                    ${escapeHTML(title)}
+                </h3>
+
+                <p class="author">
+                    ✍️ ${escapeHTML(author)}
+                </p>
+
+                <p class="year">
+                    📅 ${year}
+                </p>
+
+                <a
+                    class="book-link"
+                    href="${link}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    عرض الكتاب →
+                </a>
+
+            </div>
+
+        `;
+
+
+        books.appendChild(card);
     }
 
 
-    // --------------------------------------------------
-    // Example stars
-    // --------------------------------------------------
 
-    function searchExample(name) {
+    /*
+        Category search
+    */
 
-        document.getElementById("starInput").value =
-            name;
+    function searchCategory(category) {
 
-        searchStar();
+        document.getElementById("searchInput")
+            .value = category;
+
+
+        document.getElementById("resultsTitle")
+            .textContent =
+            "كتب: " + category;
+
+
+        searchAPI(category);
     }
 
 
-    // --------------------------------------------------
-    // Error handling
-    // --------------------------------------------------
+
+    /*
+        Show error
+    */
 
     function showError(message) {
 
         const error =
             document.getElementById("error");
 
-        error.textContent = message;
 
-        error.style.display = "block";
+        error.textContent =
+            message;
+
+
+        error.style.display =
+            "block";
     }
 
 
-    function hideError() {
 
-        document.getElementById("error")
-            .style.display = "none";
-    }
-
-
-    // --------------------------------------------------
-    // Basic HTML escaping
-    // --------------------------------------------------
+    /*
+        Prevent HTML injection
+    */
 
     function escapeHTML(text) {
 
         const div =
             document.createElement("div");
 
-        div.textContent = text;
+
+        div.textContent =
+            text;
+
 
         return div.innerHTML;
     }
 
 
-    // --------------------------------------------------
-    // Press Enter to search
-    // --------------------------------------------------
+
+    /*
+        Press Enter to search
+    */
 
     document
-        .getElementById("starInput")
-        .addEventListener("keydown", function(event) {
+        .getElementById("searchInput")
+        .addEventListener(
+            "keydown",
+            function(event) {
 
-            if (event.key === "Enter") {
-                searchStar();
+                if (event.key === "Enter") {
+
+                    searchBooks();
+
+                }
+
             }
-
-        });
+        );
 
 </script>
 
