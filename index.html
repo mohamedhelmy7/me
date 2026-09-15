@@ -1,910 +1,1348 @@
+```html
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ailmaas | موسوعة وبوابة أدوات الذكاء الاصطناعي</title>
-    <!-- خط تجوال من Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome للأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        :root {
-            --bg-dark: #070a13;
-            --bg-card: rgba(18, 24, 43, 0.7);
-            --primary: #00f2fe;
-            --secondary: #4facfe;
-            --gem-glow: #38ef7d;
-            --text-main: #f0f4f8;
-            --text-muted: #94a3b8;
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --card-hover-border: rgba(0, 242, 254, 0.4);
-            --radius-lg: 18px;
-            --radius-md: 12px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+<title>Ailmaas — Discover AI</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-        }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            min-height: 100vh;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 15% 20%, rgba(79, 172, 254, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 85% 75%, rgba(0, 242, 254, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(56, 239, 125, 0.05) 0%, transparent 50%);
-            background-attachment: fixed;
-        }
+:root{
+    --bg:#070711;
+    --bg2:#0d0d1c;
+    --card:rgba(255,255,255,.055);
+    --border:rgba(255,255,255,.1);
+    --text:#f7f7ff;
+    --muted:#9999b2;
+    --primary:#9b6cff;
+    --secondary:#5ce1e6;
+    --pink:#ff65c3;
+}
 
-        /* Container */
-        .container {
-            max-width: 1350px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        /* Header & Logo */
-        header {
-            padding: 25px 0;
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border-glass);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:
+        radial-gradient(circle at 20% 10%,rgba(155,108,255,.13),transparent 30%),
+        radial-gradient(circle at 80% 20%,rgba(92,225,230,.09),transparent 28%),
+        var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden;
+}
 
-        .logo-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-            color: inherit;
-        }
+/* ================= BACKGROUND ================= */
 
-        /* Gem Logo SVG & Animation */
-        .gem-icon {
-            width: 48px;
-            height: 48px;
-            filter: drop-shadow(0 0 12px rgba(0, 242, 254, 0.8));
-            animation: gemFloat 4s ease-in-out infinite, gemShimmer 3s ease-in-out infinite alternate;
-        }
+.bg-orb{
+    position:fixed;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.12;
+    pointer-events:none;
+    z-index:-1;
+}
 
-        @keyframes gemFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-6px) rotate(3deg); }
-        }
+.orb1{
+    background:var(--primary);
+    top:-200px;
+    left:-150px;
+    animation:float1 10s ease-in-out infinite;
+}
 
-        @keyframes gemShimmer {
-            0% { filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.6)); }
-            100% { filter: drop-shadow(0 0 20px rgba(56, 239, 125, 0.9)); }
-        }
+.orb2{
+    background:var(--secondary);
+    right:-200px;
+    top:300px;
+    animation:float2 12s ease-in-out infinite;
+}
 
-        .logo-title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #38ef7d 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
-        }
+@keyframes float1{
+    50%{transform:translate(100px,100px)}
+}
 
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 60px 0 40px;
-        }
+@keyframes float2{
+    50%{transform:translate(-100px,-70px)}
+}
 
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            line-height: 1.3;
-        }
+/* ================= NAVBAR ================= */
 
-        .hero h1 span {
-            background: linear-gradient(120deg, var(--primary), var(--gem-glow));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    background:rgba(7,7,17,.72);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
 
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.15rem;
-            max-width: 750px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:-.7px;
+}
 
-        /* Controls / Filtering Bar */
-        .controls-panel {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-lg);
-            padding: 24px;
-            margin-bottom: 40px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-        }
+.logo-gem{
+    width:38px;
+    height:38px;
+    position:relative;
+    transform:rotate(45deg);
+    border-radius:9px;
+    background:linear-gradient(
+        135deg,
+        #e8d7ff,
+        #9b6cff 35%,
+        #5ce1e6 70%,
+        #fff
+    );
+    box-shadow:
+        0 0 18px rgba(155,108,255,.7),
+        0 0 45px rgba(92,225,230,.2);
+    animation:gemPulse 3s ease-in-out infinite;
+}
 
-        .search-wrapper {
-            position: relative;
-            margin-bottom: 20px;
-        }
+.logo-gem:before{
+    content:"";
+    position:absolute;
+    inset:6px;
+    border:2px solid rgba(255,255,255,.7);
+    border-radius:5px;
+}
 
-        .search-wrapper i {
-            position: absolute;
-            right: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 1.2rem;
-        }
+.logo-gem:after{
+    content:"";
+    position:absolute;
+    width:10px;
+    height:10px;
+    background:white;
+    border-radius:50%;
+    top:5px;
+    left:7px;
+    filter:blur(1px);
+}
 
-        .search-input {
-            width: 100%;
-            padding: 15px 50px 15px 20px;
-            background: rgba(10, 15, 30, 0.7);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-md);
-            color: #fff;
-            font-size: 1rem;
-            outline: none;
-            transition: var(--transition);
-        }
+@keyframes gemPulse{
+    50%{
+        transform:rotate(225deg) scale(1.08);
+        box-shadow:
+        0 0 28px rgba(155,108,255,.9),
+        0 0 60px rgba(92,225,230,.3);
+    }
+}
 
-        .search-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
-        }
+.nav-links{
+    display:flex;
+    gap:28px;
+}
 
-        .filter-groups {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+.nav-links a{
+    color:var(--muted);
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
 
-        .filter-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
+.nav-links a:hover{
+    color:white;
+}
 
-        .filter-label {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--primary);
-            min-width: 90px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+/* ================= HERO ================= */
 
-        .filter-chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
+.hero{
+    max-width:1150px;
+    margin:auto;
+    padding:100px 20px 65px;
+    text-align:center;
+}
 
-        .chip {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border-glass);
-            color: var(--text-muted);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: var(--transition);
-            user-select: none;
-        }
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 15px;
+    border:1px solid rgba(155,108,255,.3);
+    border-radius:50px;
+    background:rgba(155,108,255,.08);
+    color:#cbb8ff;
+    font-size:13px;
+    margin-bottom:24px;
+}
 
-        .chip:hover {
-            color: #fff;
-            background: rgba(255, 255, 255, 0.1);
-        }
+.badge span{
+    width:7px;
+    height:7px;
+    background:#5ce1e6;
+    border-radius:50%;
+    box-shadow:0 0 12px #5ce1e6;
+}
 
-        .chip.active {
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            color: #050b14;
-            font-weight: 700;
-            border-color: transparent;
-            box-shadow: 0 4px 12px rgba(0, 242, 254, 0.3);
-        }
+.hero h1{
+    font-size:clamp(48px,8vw,92px);
+    line-height:.95;
+    letter-spacing:-5px;
+    margin-bottom:25px;
+}
 
-        /* Results Grid */
-        .results-summary {
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.gradient{
+    background:linear-gradient(
+        90deg,
+        #fff,
+        #b897ff,
+        #5ce1e6,
+        #ff8bd7
+    );
+    -webkit-background-clip:text;
+    color:transparent;
+    background-size:200%;
+    animation:gradientMove 5s linear infinite;
+}
 
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
-        }
+@keyframes gradientMove{
+    to{background-position:200%}
+}
 
-        /* Card Design */
-        .tool-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-lg);
-            padding: 22px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: var(--transition);
-            backdrop-filter: blur(8px);
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 0.4s ease-in-out;
-        }
+.hero p{
+    max-width:680px;
+    margin:auto;
+    color:var(--muted);
+    line-height:1.7;
+    font-size:16px;
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+.search-box{
+    max-width:720px;
+    margin:38px auto 0;
+    position:relative;
+}
 
-        .tool-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--gem-glow));
-            opacity: 0;
-            transition: var(--transition);
-        }
+.search-box input{
+    width:100%;
+    height:64px;
+    border-radius:18px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.065);
+    color:white;
+    padding:0 24px 0 55px;
+    outline:none;
+    font-size:15px;
+    backdrop-filter:blur(15px);
+    transition:.3s;
+}
 
-        .tool-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--card-hover-border);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 242, 254, 0.1);
-        }
+.search-box input:focus{
+    border-color:rgba(155,108,255,.7);
+    box-shadow:0 0 30px rgba(155,108,255,.12);
+}
 
-        .tool-card:hover::before {
-            opacity: 1;
-        }
+.search-icon{
+    position:absolute;
+    left:21px;
+    top:21px;
+    color:#aaa;
+    font-size:20px;
+}
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 14px;
-        }
+/* ================= STATS ================= */
 
-        .tool-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: var(--radius-md);
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--primary);
-            border: 1px solid var(--border-glass);
-        }
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    margin-top:40px;
+}
 
-        .tool-titles h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 2px;
-        }
+.stat strong{
+    display:block;
+    font-size:22px;
+}
 
-        .tool-company {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
+.stat span{
+    color:var(--muted);
+    font-size:12px;
+}
 
-        .tool-desc {
-            font-size: 0.92rem;
-            color: #cbd5e1;
-            line-height: 1.5;
-            margin-bottom: 16px;
-            min-height: 44px;
-        }
+/* ================= MAIN ================= */
 
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 18px;
-        }
+.container{
+    max-width:1250px;
+    margin:auto;
+    padding:20px;
+}
 
-        .tag {
-            font-size: 0.75rem;
-            padding: 4px 9px;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-muted);
-        }
+.section-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:25px 0;
+}
 
-        .tag.target {
-            color: #38ef7d;
-            background: rgba(56, 239, 125, 0.1);
-        }
+.section-header h2{
+    font-size:25px;
+}
 
-        .card-footer {
-            display: flex;
-            gap: 10px;
-            margin-top: auto;
-        }
+.section-header p{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:5px;
+}
 
-        .btn {
-            flex: 1;
-            padding: 10px;
-            border-radius: var(--radius-md);
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            border: none;
-        }
+/* ================= CATEGORIES ================= */
 
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--border-glass);
-            color: #fff;
-        }
+.categories{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding:5px 0 20px;
+    scrollbar-width:none;
+}
 
-        .btn-outline:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: rgba(0, 242, 254, 0.05);
-        }
+.categories::-webkit-scrollbar{
+    display:none;
+}
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
-            color: #040914;
-        }
+.category{
+    white-space:nowrap;
+    padding:11px 17px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.04);
+    color:#aaa;
+    cursor:pointer;
+    font-size:13px;
+    transition:.3s;
+}
 
-        .btn-primary:hover {
-            opacity: 0.9;
-            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
-        }
+.category:hover,
+.category.active{
+    color:white;
+    border-color:rgba(155,108,255,.6);
+    background:rgba(155,108,255,.15);
+    box-shadow:0 0 20px rgba(155,108,255,.08);
+}
 
-        /* Modal Details */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(3, 7, 18, 0.85);
-            backdrop-filter: blur(8px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            padding: 20px;
-        }
+/* ================= FILTERS ================= */
 
-        .modal-card {
-            background: #0d1326;
-            border: 1px solid rgba(0, 242, 254, 0.3);
-            border-radius: var(--radius-lg);
-            width: 100%;
-            max-width: 650px;
-            padding: 30px;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-            animation: modalScale 0.25s ease-out;
-        }
+.filters{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
 
-        @keyframes modalScale {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
+select{
+    background:#111121;
+    border:1px solid var(--border);
+    color:#ddd;
+    padding:11px 14px;
+    border-radius:11px;
+    outline:none;
+    cursor:pointer;
+}
 
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: var(--transition);
-        }
+.favorite-filter{
+    padding:11px 16px;
+    border:1px solid var(--border);
+    border-radius:11px;
+    background:rgba(255,255,255,.04);
+    color:#aaa;
+    cursor:pointer;
+}
 
-        .close-btn:hover {
-            color: #fff;
-        }
+.favorite-filter.active{
+    color:#ff8bd7;
+    border-color:#ff65c3;
+}
 
-        .code-snippet {
-            background: #050811;
-            padding: 14px;
-            border-radius: var(--radius-md);
-            font-family: monospace;
-            font-size: 0.85rem;
-            color: #38ef7d;
-            overflow-x: auto;
-            direction: ltr;
-            text-align: left;
-            margin: 15px 0;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+/* ================= GRID ================= */
 
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 60px 0;
-            grid-column: 1 / -1;
-            color: var(--text-muted);
-        }
+.tools-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
 
-        .empty-state i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
+.tool-card{
+    position:relative;
+    padding:20px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.065),
+            rgba(255,255,255,.025)
+        );
+    backdrop-filter:blur(15px);
+    transition:.35s;
+    overflow:hidden;
+    animation:cardIn .5s ease both;
+}
 
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border-glass);
-            padding: 30px 0;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-    </style>
+.tool-card:before{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    background:var(--primary);
+    opacity:.06;
+    filter:blur(45px);
+    top:-60px;
+    right:-50px;
+}
+
+.tool-card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(155,108,255,.45);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.3),
+        0 0 30px rgba(155,108,255,.08);
+}
+
+@keyframes cardIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.tool-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.tool-logo{
+    width:52px;
+    height:52px;
+    border-radius:15px;
+    background:white;
+    padding:10px;
+    object-fit:contain;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+.favorite{
+    border:0;
+    background:none;
+    color:#666;
+    font-size:22px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.favorite:hover,
+.favorite.active{
+    color:#ff65c3;
+    transform:scale(1.2);
+}
+
+.tool-card h3{
+    margin-top:17px;
+    font-size:17px;
+}
+
+.tool-card p{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.6;
+    margin:8px 0 15px;
+    min-height:40px;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+}
+
+.tag{
+    padding:5px 8px;
+    border-radius:7px;
+    background:rgba(255,255,255,.06);
+    color:#aaa;
+    font-size:10px;
+}
+
+.tool-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:18px;
+}
+
+.rating{
+    color:#ffc861;
+    font-size:12px;
+}
+
+.price{
+    font-size:10px;
+    padding:5px 8px;
+    border-radius:7px;
+    background:rgba(92,225,230,.08);
+    color:#6de9ed;
+}
+
+.visit{
+    display:block;
+    text-align:center;
+    margin-top:17px;
+    padding:11px;
+    border-radius:10px;
+    text-decoration:none;
+    color:white;
+    font-size:12px;
+    font-weight:600;
+    background:linear-gradient(
+        90deg,
+        rgba(155,108,255,.8),
+        rgba(92,225,230,.55)
+    );
+    transition:.3s;
+}
+
+.visit:hover{
+    transform:scale(1.02);
+    box-shadow:0 8px 25px rgba(155,108,255,.2);
+}
+
+/* ================= EMPTY ================= */
+
+.empty{
+    text-align:center;
+    padding:80px 20px;
+    color:var(--muted);
+    display:none;
+}
+
+.empty div{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    border-top:1px solid var(--border);
+    margin-top:90px;
+    padding:40px 20px;
+    text-align:center;
+    color:#666;
+    font-size:12px;
+}
+
+footer strong{
+    color:#aaa;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1000px){
+    .tools-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+@media(max-width:700px){
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        padding-top:70px;
+    }
+
+    .hero h1{
+        letter-spacing:-3px;
+    }
+
+    .stats{
+        gap:25px;
+    }
+
+    .tools-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:480px){
+    .tools-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        flex-wrap:wrap;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Header & Rare Gem Logo -->
-    <header>
-        <div class="container header-content">
-            <a href="#" class="logo-box">
-                <!-- SVG للجوهِرة النادرة -->
-                <svg class="gem-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="gemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#00f2fe" />
-                            <stop offset="50%" stop-color="#4facfe" />
-                            <stop offset="100%" stop-color="#38ef7d" />
-                        </linearGradient>
-                    </defs>
-                    <!-- تفاصيل ماسة نادرة ثلاثية الأبعاد -->
-                    <polygon points="50,5 85,25 50,45 15,25" fill="url(#gemGrad)" opacity="0.9" />
-                    <polygon points="15,25 50,45 50,95 5,45" fill="url(#gemGrad)" opacity="0.6" />
-                    <polygon points="85,25 50,45 50,95 95,45" fill="url(#gemGrad)" opacity="0.75" />
-                    <polygon points="50,45 15,25 5,45" fill="#ffffff" opacity="0.3" />
-                    <circle cx="50" cy="45" r="3" fill="#ffffff" />
-                </svg>
-                <span class="logo-title">Ailmaas</span>
-            </a>
-            <div style="font-size: 0.88rem; color: var(--gem-glow);">
-                <i class="fas fa-sparkles"></i> جوهرة حلول الذكاء الاصطناعي
-            </div>
-        </div>
-    </header>
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
 
-    <!-- Hero Section -->
-    <section class="hero container">
-        <h1>بوابتك لأقوى <span>واجهات برمجة التطبيقات (APIs)</span> عالمياً</h1>
-        <p>موسوعة مُنظمة لأهم أدوات ونماذج الذكاء الاصطناعي في كل التخصصات، موجهة للأطفال، الطلاب، المطورين، ورواد الأعمال من جميع الأعمار.</p>
-    </section>
+<!-- NAVBAR -->
 
-    <!-- Main Content & Filters -->
-    <main class="container">
-        <section class="controls-panel">
-            <!-- Live Search -->
-            <div class="search-wrapper">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" class="search-input" placeholder="ابحث باسم الأداة، الشركة، التخصص، أو الخدمة...">
-            </div>
+<nav>
 
-            <div class="filter-groups">
-                <!-- المجال والتخصص -->
-                <div class="filter-row">
-                    <span class="filter-label"><i class="fas fa-shapes"></i> المجال:</span>
-                    <div class="filter-chips" id="categoryFilters">
-                        <span class="chip active" data-filter="all">الكل</span>
-                        <span class="chip" data-filter="chat">نصوص ومحادثة</span>
-                        <span class="chip" data-filter="vision">توليد الصور والفن</span>
-                        <span class="chip" data-filter="coding">البرمجة والأكواد</span>
-                        <span class="chip" data-filter="audio">الصوت والموسيقى</span>
-                        <span class="chip" data-filter="video">صناعة الفيديو</span>
-                        <span class="chip" data-filter="education">تعليم وأطفال</span>
-                        <span class="chip" data-filter="science">أبحاث ورعاية صحية</span>
-                        <span class="chip" data-filter="business">إدارة أعمال وتسويق</span>
-                    </div>
-                </div>
+    <div class="logo">
+        <div class="logo-gem"></div>
+        Ailmaas
+    </div>
 
-                <!-- الشريحة المستهدفة والسن -->
-                <div class="filter-row">
-                    <span class="filter-label"><i class="fas fa-users"></i> الفئة:</span>
-                    <div class="filter-chips" id="targetFilters">
-                        <span class="chip active" data-filter="all">جميع الأعمار</span>
-                        <span class="chip" data-filter="developers">المطورين</span>
-                        <span class="chip" data-filter="students">الطلاب والباحثين</span>
-                        <span class="chip" data-filter="business">الشركات والرواد</span>
-                        <span class="chip" data-filter="kids">الناشئة والأطفال</span>
-                    </div>
-                </div>
+    <div class="nav-links">
+        <a href="#tools">Explore</a>
+        <a href="#categories">Categories</a>
+        <a href="#favorites">Favorites</a>
+    </div>
 
-                <!-- نموذج التسعير -->
-                <div class="filter-row">
-                    <span class="filter-label"><i class="fas fa-tag"></i> الوصول:</span>
-                    <div class="filter-chips" id="pricingFilters">
-                        <span class="chip active" data-filter="all">الكل</span>
-                        <span class="chip" data-filter="free-tier">تجربة مجانية / أرصدة</span>
-                        <span class="chip" data-filter="open-source">مفتوح المصدر (Open Source)</span>
-                        <span class="chip" data-filter="paid">مدفوع تجاري</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+</nav>
 
-        <!-- Stats / Count Bar -->
-        <div class="results-summary">
-            <div>المعروض حالياً: <span id="toolCount" style="color: var(--primary); font-weight: bold;">0</span> أداة</div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="badge">
+        <span></span>
+        The AI Universe — All in One Place
+    </div>
+
+    <h1>
+        Discover
+        <span class="gradient">AI.</span>
+    </h1>
+
+    <p>
+        Explore the world's most powerful artificial intelligence tools
+        for work, education, creativity, research, coding, business and everyday life.
+    </p>
+
+    <div class="search-box">
+        <span class="search-icon">⌕</span>
+        <input
+            id="search"
+            type="text"
+            placeholder="Search AI tools, categories, or capabilities..."
+        >
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+            <strong id="toolCount">0+</strong>
+            <span>AI Tools</span>
         </div>
 
-        <!-- Cards Grid -->
-        <div class="tools-grid" id="toolsContainer">
-            <!-- ديناميكياً بواسطة جافاسكريبت -->
+        <div class="stat">
+            <strong>20+</strong>
+            <span>Categories</span>
         </div>
-    </main>
 
-    <!-- Modal التفاصيل ونموذج الـ API -->
-    <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-card">
-            <i class="fas fa-times close-btn" id="closeModal"></i>
-            <div id="modalContent">
-                <!-- المحتوى يولد بالجافاسكريبت -->
-            </div>
+        <div class="stat">
+            <strong>∞</strong>
+            <span>Possibilities</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MAIN -->
+
+<main class="container" id="tools">
+
+    <div class="section-header">
+        <div>
+            <h2>Explore AI</h2>
+            <p>Find the perfect tool for what you want to accomplish.</p>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>جميع الحقوق محفوظة منصة <strong>Ailmaas</strong> © 2026 — مصممة للارتقاء بإنتاجية الجميع حول العالم.</p>
+
+    <!-- CATEGORIES -->
+
+    <div id="categories" class="categories">
+
+        <div class="category active" data-category="All">
+            All
         </div>
-    </footer>
 
-    <!-- JavaScript Data & Logic -->
-    <script>
-        // قاعدة بيانات أهم أدوات و APIs الذكاء الاصطناعي العالمية
-        const aiTools = [
-            {
-                id: "openai",
-                name: "OpenAI API (GPT-4o)",
-                company: "OpenAI",
-                icon: "fa-brain",
-                category: "chat",
-                target: "developers",
-                pricing: "paid",
-                desc: "المعيار العالمي الرائد في معالجة اللغات الطبيعية، المهام المعقدة، والتحليل متعدد الوسائط (نصوص، صوت، صور).",
-                sampleEndpoint: "https://api.openai.com/v1/chat/completions",
-                codeSnippet: `curl https://api.openai.com/v1/chat/completions \\
-  -H "Authorization: Bearer $OPENAI_API_KEY" \\
-  -d '{"model": "gpt-4o", "messages": [{"role": "user", "content": "مرحباً يا ألماس!"}]}'`,
-                docUrl: "https://platform.openai.com/docs"
-            },
-            {
-                id: "gemini",
-                name: "Google Gemini API",
-                company: "Google DeepMind",
-                icon: "fa-infinity",
-                category: "chat",
-                target: "students",
-                pricing: "free-tier",
-                desc: "نموذج غوغل الخارق بقدرة استيعاب هائلة للسياق (أكثر من مليون رمز)، يحلل الفيديو والأوراق العلمية والبرمجة بدقة.",
-                sampleEndpoint: "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro",
-                codeSnippet: `fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key=" + API_KEY, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ contents: [{ parts: [{ text: "اشرح نظرية النسبية ببساطة" }] }] })
-});`,
-                docUrl: "https://ai.google.dev/"
-            },
-            {
-                id: "claude",
-                name: "Anthropic Claude API",
-                company: "Anthropic",
-                icon: "fa-shield-halved",
-                category: "chat",
-                target: "business",
-                pricing: "paid",
-                desc: "الأعلى دقة في الكتابة الإبداعية والأكاديمية، يتميز بأمان متطور وتوليد كود دقيق للغاية وفهم عميق للتعليمات.",
-                sampleEndpoint: "https://api.anthropic.com/v1/messages",
-                codeSnippet: `curl https://api.anthropic.com/v1/messages \\
-  -H "x-api-key: $ANTHROPIC_API_KEY" \\
-  -d '{"model": "claude-3-5-sonnet", "messages": [{"role": "user", "content": "لخص التقرير المالي"}]}'`,
-                docUrl: "https://docs.anthropic.com/"
-            },
-            {
-                id: "midjourney",
-                name: "Midjourney API / Imagine",
-                company: "Midjourney",
-                icon: "fa-palette",
-                category: "vision",
-                target: "students",
-                pricing: "paid",
-                desc: "الأداة الأولى فوتوغرافياً وفنياً لتوليد أروع اللوحات والتصاميم ثلاثية الأبعاد بجودة سينمائية فائقة من الوصف.",
-                sampleEndpoint: "https://api.midjourney.com/v1/imagine",
-                codeSnippet: `// يستدعى عبر واجهات البوت وخدمات التكامل الرسمية
-POST /api/imagine
-Body: { "prompt": "rare radiant glowing gemstone on dark cyber pedestal, octane render --v 6" }`,
-                docUrl: "https://docs.midjourney.com/"
-            },
-            {
-                id: "huggingface",
-                name: "Hugging Face Inference",
-                company: "Hugging Face",
-                icon: "fa-face-smile",
-                category: "coding",
-                target: "developers",
-                pricing: "open-source",
-                desc: "مستودع العالم الأضخم؛ يتيح استدعاء آلاف النماذج مفتوحة المصدر (Llama, Mistral) عبر واجهات استدلال سريعة.",
-                sampleEndpoint: "https://api-inference.huggingface.co/models/",
-                codeSnippet: `curl https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B \\
-  -H "Authorization: Bearer $HF_TOKEN" \\
-  -d '{"inputs": "كيف تصنع مستقبلك؟"}'`,
-                docUrl: "https://huggingface.co/docs/api-inference"
-            },
-            {
-                id: "elevenlabs",
-                name: "ElevenLabs Voice AI",
-                company: "ElevenLabs",
-                icon: "fa-microphone-lines",
-                category: "audio",
-                target: "business",
-                pricing: "free-tier",
-                desc: "أقوى محرك لتحويل النص لكلام منطوق (Text-to-Speech) ودبلجة وتوليد أصوات واقعية جداً وبأي نبرة ولغة في العالم.",
-                sampleEndpoint: "https://api.elevenlabs.io/v1/text-to-speech/{voice_id}",
-                codeSnippet: `curl -X POST "https://api.elevenlabs.io/v1/text-to-speech/21m00Tcm4TlvDq8ikWAM" \\
-  -H "xi-api-key: $ELEVEN_KEY" \\
-  -d '{"text": "أهلاً بكم في منصة ألماس للذكاء الاصطناعي"}'`,
-                docUrl: "https://elevenlabs.io/docs"
-            },
-            {
-                id: "runway",
-                name: "Runway Gen-3 Alpha API",
-                company: "RunwayML",
-                icon: "fa-film",
-                category: "video",
-                target: "business",
-                pricing: "paid",
-                desc: "إنشاء وتحريك مقاطع فيديو واقعية وخيالية عالية الدقة مباشرة من نص مكتوب أو صور ثابتة للإعلانات والسينما.",
-                sampleEndpoint: "https://api.runwayml.com/v1/generate",
-                codeSnippet: `POST /v1/generate
-{
-  "prompt": "Camera flythrough of an ancient mystical emerald temple, 4K quality",
-  "duration": 5
-}`,
-                docUrl: "https://runwayml.com/"
-            },
-            {
-                id: "khanmigo",
-                name: "Khanmigo (AI Tutor)",
-                company: "Khan Academy",
-                icon: "fa-graduation-cap",
-                category: "education",
-                target: "kids",
-                pricing: "free-tier",
-                desc: "معلم ذكي تفاعلي للأطفال واليافعين، لا يعطي الحل مباشرة بل يطرح أسئلة ملهمة تشجع الطالب على التفكير وحل المسائل.",
-                sampleEndpoint: "https://api.khanacademy.org/v1/tutor",
-                codeSnippet: `// نظام مخصص لحماية وتوجيه الأطفال والطلاب تربوياً
-InteractiveTutorSession.start({
-  studentAge: 11,
-  subject: "الرياضيات والعلوم"
-});`,
-                docUrl: "https://www.khanacademy.org/khanmigo"
-            },
-            {
-                id: "copilot",
-                name: "GitHub Copilot API",
-                company: "Microsoft & GitHub",
-                icon: "fa-code",
-                category: "coding",
-                target: "developers",
-                pricing: "paid",
-                desc: "مساعد المطورين الأقوى في محررات الأكواد؛ يكمل السطور تلقائياً ويكتشف الثغرات ويكتب الاختبارات البرمجية بضغطة زر.",
-                sampleEndpoint: "https://api.githubcopilot.com/v1",
-                codeSnippet: `// إضافة تلقائية للوظيفة داخل VS Code
-function calculateDistance(x1, y1, x2, y2) {
-  // يكتب الكود تلقائياً
-}`,
-                docUrl: "https://github.com/features/copilot"
-            },
-            {
-                id: "medpalm",
-                name: "Med-PaLM / BioGPT API",
-                company: "Google Research & NIH",
-                icon: "fa-heart-pulse",
-                category: "science",
-                target: "students",
-                pricing: "free-tier",
-                desc: "نماذج مخصصة للتحليل الطبي، مراجعة الأوراق الحيوية، والمساعدة في تلخيص الفحوصات والبحوث السريرية المعقدة.",
-                sampleEndpoint: "https://health.google/care/med-palm/",
-                codeSnippet: `POST /api/medical/analyze
-{
-  "query": "تفسير المؤشرات الحيوية في التحليل المخبري التالي...",
-  "type": "clinical_summary"
-}`,
-                docUrl: "https://health.google/care/med-palm/"
-            }
-        ];
+        <div class="category" data-category="Assistant">
+            🤖 Assistants
+        </div>
 
-        // المتغيرات وحالة الفلاتر
-        let currentCategory = "all";
-        let currentTarget = "all";
-        let currentPricing = "all";
-        let searchQuery = "";
+        <div class="category" data-category="Coding">
+            💻 Coding
+        </div>
 
-        const toolsContainer = document.getElementById("toolsContainer");
-        const toolCountEl = document.getElementById("toolCount");
-        const searchInput = document.getElementById("searchInput");
-        const modalOverlay = document.getElementById("modalOverlay");
-        const modalContent = document.getElementById("modalContent");
-        const closeModal = document.getElementById("closeModal");
+        <div class="category" data-category="Image">
+            🎨 Image
+        </div>
 
-        // ترجمات وسوم الفئات
-        const targetMap = {
-            developers: "المطورين",
-            students: "الطلاب والباحثين",
-            business: "رواد الأعمال والشركات",
-            kids: "للأطفال والناشئة"
-        };
+        <div class="category" data-category="Video">
+            🎬 Video
+        </div>
 
-        const pricingMap = {
-            "free-tier": "تجربة مجانية",
-            "open-source": "مفتوح المصدر",
-            "paid": "مدفوع"
-        };
+        <div class="category" data-category="Audio">
+            🎵 Audio
+        </div>
 
-        // عرض البطاقات
-        function renderTools() {
-            const filtered = aiTools.filter(tool => {
-                const matchCategory = (currentCategory === "all" || tool.category === currentCategory);
-                const matchTarget = (currentTarget === "all" || tool.target === currentTarget);
-                const matchPricing = (currentPricing === "all" || tool.pricing === currentPricing);
-                const matchSearch = tool.name.toLowerCase().includes(searchQuery) ||
-                                    tool.company.toLowerCase().includes(searchQuery) ||
-                                    tool.desc.toLowerCase().includes(searchQuery);
+        <div class="category" data-category="Writing">
+            ✍️ Writing
+        </div>
 
-                return matchCategory && matchTarget && matchPricing && matchSearch;
-            });
+        <div class="category" data-category="Education">
+            🎓 Education
+        </div>
 
-            toolCountEl.innerText = filtered.length;
+        <div class="category" data-category="Research">
+            🔬 Research
+        </div>
 
-            if (filtered.length === 0) {
-                toolsContainer.innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-gem"></i>
-                        <h3>لم نجد أي أداة مطابقة لمعايير البحث</h3>
-                        <p>جرب تغيير الكلمات المفتاحية أو خيارات الفلترة لاستكشاف المزيد من الأدوات.</p>
-                    </div>
-                `;
-                return;
-            }
+        <div class="category" data-category="Business">
+            💼 Business
+        </div>
 
-            toolsContainer.innerHTML = filtered.map(tool => `
-                <div class="tool-card">
-                    <div>
-                        <div class="card-header">
-                            <div class="tool-icon">
-                                <i class="fas ${tool.icon}"></i>
-                            </div>
-                            <div class="tool-titles">
-                                <h3>${tool.name}</h3>
-                                <span class="tool-company">${tool.company}</span>
-                            </div>
-                        </div>
-                        <p class="tool-desc">${tool.desc}</p>
-                        <div class="card-tags">
-                            <span class="tag target"><i class="fas fa-check-circle"></i> ${targetMap[tool.target] || tool.target}</span>
-                            <span class="tag"><i class="fas fa-dollar-sign"></i> ${pricingMap[tool.pricing] || tool.pricing}</span>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-outline" onclick="openToolModal('${tool.id}')">
-                            <i class="fas fa-code"></i> تجربة API
-                        </button>
-                        <a href="${tool.docUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                            <i class="fas fa-arrow-up-right-from-square"></i> التوثيق
-                        </a>
-                    </div>
-                </div>
-            `).join('');
-        }
+        <div class="category" data-category="Design">
+            🖌️ Design
+        </div>
 
-        // إعداد الفلاتر عند الضغط
-        function setupFilters(containerId, callback) {
-            const chips = document.querySelectorAll(`#${containerId} .chip`);
-            chips.forEach(chip => {
-                chip.addEventListener('click', () => {
-                    chips.forEach(c => c.classList.remove('active'));
-                    chip.classList.add('active');
-                    callback(chip.getAttribute('data-filter'));
-                    renderTools();
-                });
-            });
-        }
+        <div class="category" data-category="Productivity">
+            ⚡ Productivity
+        </div>
 
-        // تشغيل مراقبات الأحداث
-        setupFilters('categoryFilters', val => currentCategory = val);
-        setupFilters('targetFilters', val => currentTarget = val);
-        setupFilters('pricingFilters', val => currentPricing = val);
+    </div>
 
-        // البحث الفوري
-        searchInput.addEventListener('input', (e) => {
-            searchQuery = e.target.value.toLowerCase().trim();
-            renderTools();
-        });
 
-        // فتح الـ Modal
-        window.openToolModal = function(id) {
-            const tool = aiTools.find(t => t.id === id);
-            if(!tool) return;
+    <!-- FILTERS -->
 
-            modalContent.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-                    <div class="tool-icon" style="width: 50px; height: 50px;">
-                        <i class="fas ${tool.icon}"></i>
-                    </div>
-                    <div>
-                        <h2 style="color: #fff; font-size: 1.4rem;">${tool.name}</h2>
-                        <span style="color: var(--primary); font-size: 0.85rem;">المطور: ${tool.company}</span>
-                    </div>
-                </div>
-                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px;">${tool.desc}</p>
-                <div style="margin-top: 10px;">
-                    <strong style="color: var(--gem-glow); font-size: 0.9rem;">نقطة النهاية الأساسية (Endpoint):</strong>
-                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 8px; font-family: monospace; font-size: 0.85rem; margin: 6px 0; word-break: break-all; color: #fff;">
-                        ${tool.sampleEndpoint}
-                    </div>
-                </div>
-                <div>
-                    <strong style="color: var(--primary); font-size: 0.9rem;">نموذج كود للاستدعاء السريع:</strong>
-                    <pre class="code-snippet"><code>${tool.codeSnippet}</code></pre>
-                </div>
-                <div style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
-                    <a href="${tool.docUrl}" target="_blank" class="btn btn-primary" style="flex: none; padding: 8px 24px;">زيارة منصة المطورين الرسمية</a>
-                </div>
-            `;
-            modalOverlay.style.display = 'flex';
-        };
+    <div class="filters">
 
-        // إغلاق الـ Modal
-        closeModal.addEventListener('click', () => modalOverlay.style.display = 'none');
-        window.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) modalOverlay.style.display = 'none';
-        });
+        <select id="pricingFilter">
+            <option value="All">All Pricing</option>
+            <option value="Free">Free</option>
+            <option value="Freemium">Freemium</option>
+            <option value="Paid">Paid</option>
+        </select>
 
-        // العرض الأولي
+        <select id="levelFilter">
+            <option value="All">All Levels</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+
+        <select id="sortFilter">
+            <option value="featured">Featured</option>
+            <option value="rating">Highest Rated</option>
+            <option value="name">Name A-Z</option>
+        </select>
+
+        <button id="favoritesFilter" class="favorite-filter">
+            ♥ Favorites
+        </button>
+
+    </div>
+
+
+    <!-- TOOLS -->
+
+    <div id="toolsGrid" class="tools-grid"></div>
+
+    <div id="empty" class="empty">
+        <div>🔎</div>
+        <h3>No AI tools found</h3>
+        <p>Try another search or filter.</p>
+    </div>
+
+</main>
+
+
+<footer>
+    <strong>✦ Ailmaas</strong> — Discover the AI universe.
+    <br><br>
+    Built as a frontend AI directory.
+</footer>
+
+
+<script>
+
+/* =====================================================
+   AILMAAS AI DATABASE
+   ===================================================== */
+
+const aiTools = [
+
+    {
+        name:"ChatGPT",
+        category:"Assistant",
+        description:"AI assistant for conversation, writing, research, analysis and coding.",
+        image:"https://cdn.simpleicons.org/openai/000000",
+        website:"https://chatgpt.com",
+        pricing:"Freemium",
+        level:"Beginner",
+        rating:4.9,
+        tags:["Chat","Research","Coding"]
+    },
+
+    {
+        name:"Gemini",
+        category:"Assistant",
+        description:"Google's AI assistant for reasoning, writing, research and multimodal tasks.",
+        image:"https://cdn.simpleicons.org/googlegemini/4285F4",
+        website:"https://gemini.google.com",
+        pricing:"Freemium",
+        level:"Beginner",
+        rating:4.8,
+        tags:["Google","AI","Multimodal"]
+    },
+
+    {
+        name:"Claude",
+        category:"Assistant",
+        description:"Advanced AI assistant designed for reasoning, writing and complex tasks.",
+        image:"https://cdn.simpleicons.org/anthropic/000000",
+        website:"https://claude.ai",
+        pricing:"Freemium",
+        level:"Beginner",
+        rating:4.9,
+        tags:["Writing","Research","Reasoning"]
+    },
+
+    {
+        name:"Perplexity",
+        category:"Research",
+        description:"AI-powered answer engine for research and discovering information.",
+        image:"https://cdn.simpleicons.org/perplexity/20B8CD",
+        website:"https://www.perplexity.ai",
+        pricing:"Freemium",
+        level:"Beginner",
+        rating:4.8,
+        tags:["Search","Research","Answers"]
+    },
+
+    {
+        name:"GitHub Copilot",
+        category:"Coding",
+        description:"AI coding assistant that helps developers write and understand code.",
+        image:"https://cdn.simpleicons.org/github/000000",
+        website:"https://github.com/features/copilot",
+        pricing:"Paid",
+        level:"Intermediate",
+        rating:4.8,
+        tags:["Programming","IDE","Developer"]
+    },
+
+    {
+        name:"Cursor",
+        category:"Coding",
+        description:"AI-first code editor designed for building software faster.",
+        image:"https://cdn.simpleicons.org/cursor/ffffff",
+        website:"https://cursor.com",
+        pricing:"Freemium",
+        level:"Intermediate",
+        rating:4.8,
+        tags:["Code","Editor","AI"]
+    },
+
+    {
+        name:"Midjourney",
+        category:"Image",
+        description:"Generative AI platform for creating high-quality images from prompts.",
+        image:"https://cdn.simpleicons.org/midjourney/ffffff",
+        website:"https://www.midjourney.com",
+        pricing:"Paid",
+        level:"Beginner",
+        rating:4.8,
+        tags:["Art","Images","Creative"]
+    },
+
+    {
+        name:"Adobe Firefly",
+        category:"Image",
+        description:"Generative AI tools for creating and editing creative content.",
+        image:"https://cdn.simpleicons.org/adobe/FF0000",
+        website:"https://firefly.adobe.com",
+        pricing:"Freemium",
+        level:"Beginner",
+        rating:4.6,
+        tags:["Design","Images","Creative"]
+    },
+
+    {
+        name:"Runway",
+        category:"Video",
+        description:"AI creative platform for generating and editing video.",
+        image:"https://cdn.simpleicons.org/runway/ffffff",
+        website:"https://runwayml.com",
+        pricing:"Freemium",
+        level:"Intermediate",
+        rating:4.7,
+        tags:["Video","Generation","Film"]
+    },
+
+    {
+        name:"ElevenLabs",
+        category:"Audio",
+        description:"AI voice platform for realistic speech generation and voice applications.",
+        image:"https://cdn.simpleicons.org/elevenlabs/ffffff",
+        website:"https://elevenlabs.io",
+        pricing:"Freemium",
+        level:"Beginner",
+        rating:4.8,
+        tags:["Voice","Audio","Speech"]
+    },
+
+    {
+        name:"Suno",
+        category:"Audio",
+        description:"Create songs and music using generative artificial intelligence.",
+        image:"https://cdn.simpleicons.org/suno/ffffff",
+        website:"https://suno.com",
+        pricing:"Freemium",
+        level:"Beginner",
+        rating:4.7,
+        tags:["Music","Songs","Audio"]
+    },
+
+    {
+        name:"Grammarly",
+        category:"Writing",
+        description:"AI writing assistant for grammar, clarity, tone and communication.",
+        image:"https://cdn.simpleicons.org/grammarly/15C39A",
+        website:"https://www.grammarly.com",
+        pricing:"Freemium",
+        level:"Beginner",
+        rating:4.6,
+        tags:["Writing","Grammar","Work"]
+    },
+
+    {
+        name:"Notion AI",
+        category:"Productivity",
+        description:"AI features for writing, organizing information and productivity.",
+        image:"https://cdn.simpleicons.org/notion/ffffff",
+        website:"https://www.notion.so/product/ai",
+        pricing:"Paid",
+        level:"Beginner",
+        rating:4.6,
+        tags:["Notes","Productivity","Work"]
+    },
+
+    {
+        name:"Canva",
+        category:"Design",
+        description:"Design platform with powerful AI features for visual content creation.",
+        image:"https://cdn.simpleicons.org/canva/00C4CC",
+        website:"https://www.canva.com",
+        pricing:"Freemium",
+        level:"Beginner",
+        rating:4.7,
+        tags:["Design","Presentation","Images"]
+    },
+
+    {
+        name:"NotebookLM",
+        category:"Education",
+        description:"AI research and learning assistant that works with your sources.",
+        image:"https://cdn.simpleicons.org/googlegemini/4285F4",
+        website:"https://notebooklm.google.com",
+        pricing:"Free",
+        level:"Beginner",
+        rating:4.8,
+        tags:["Study","Research","Learning"]
+    },
+
+    {
+        name:"Wolfram Alpha",
+        category:"Education",
+        description:"Computational intelligence engine for mathematics, science and data.",
+        image:"https://cdn.simpleicons.org/wolframmathematica/dd1100",
+        website:"https://www.wolframalpha.com",
+        pricing:"Freemium",
+        level:"Intermediate",
+        rating:4.7,
+        tags:["Math","Science","Education"]
+    },
+
+    {
+        name:"Hugging Face",
+        category:"Coding",
+        description:"Open AI community and platform for models, datasets and machine learning.",
+        image:"https://cdn.simpleicons.org/huggingface/FFD21E",
+        website:"https://huggingface.co",
+        pricing:"Free",
+        level:"Advanced",
+        rating:4.8,
+        tags:["ML","Models","Open Source"]
+    },
+
+    {
+        name:"Zapier AI",
+        category:"Business",
+        description:"Automate workflows and connect applications with AI.",
+        image:"https://cdn.simpleicons.org/zapier/FF4F00",
+        website:"https://zapier.com",
+        pricing:"Freemium",
+        level:"Intermediate",
+        rating:4.5,
+        tags:["Automation","Business","Workflow"]
+    },
+
+    {
+        name:"Otter.ai",
+        category:"Productivity",
+        description:"AI meeting assistant for transcription, notes and summaries.",
+        image:"https://cdn.simpleicons.org/otter/3D7EFF",
+        website:"https://otter.ai",
+        pricing:"Freemium",
+        level:"Beginner",
+        rating:4.5,
+        tags:["Meetings","Transcription","Notes"]
+    },
+
+    {
+        name:"DeepL",
+        category:"Writing",
+        description:"AI translation and writing tools for natural multilingual communication.",
+        image:"https://cdn.simpleicons.org/deepl/0F2B46",
+        website:"https://www.deepl.com",
+        pricing:"Freemium",
+        level:"Beginner",
+        rating:4.8,
+        tags:["Translation","Language","Writing"]
+    }
+
+];
+
+
+/* =====================================================
+   STATE
+   ===================================================== */
+
+let selectedCategory = "All";
+let showFavorites = false;
+
+let favorites =
+    JSON.parse(localStorage.getItem("ailmaasFavorites")) || [];
+
+
+/* =====================================================
+   ELEMENTS
+   ===================================================== */
+
+const grid = document.getElementById("toolsGrid");
+const search = document.getElementById("search");
+const pricing = document.getElementById("pricingFilter");
+const level = document.getElementById("levelFilter");
+const sort = document.getElementById("sortFilter");
+const favoriteButton = document.getElementById("favoritesFilter");
+const empty = document.getElementById("empty");
+
+
+/* =====================================================
+   RENDER
+   ===================================================== */
+
+function renderTools(){
+
+    let tools = [...aiTools];
+
+    const query =
+        search.value.toLowerCase().trim();
+
+    tools = tools.filter(tool => {
+
+        const searchable = [
+
+            tool.name,
+            tool.category,
+            tool.description,
+            ...tool.tags
+
+        ].join(" ").toLowerCase();
+
+        return searchable.includes(query);
+
+    });
+
+
+    if(selectedCategory !== "All"){
+
+        tools = tools.filter(
+            tool => tool.category === selectedCategory
+        );
+
+    }
+
+
+    if(pricing.value !== "All"){
+
+        tools = tools.filter(
+            tool => tool.pricing === pricing.value
+        );
+
+    }
+
+
+    if(level.value !== "All"){
+
+        tools = tools.filter(
+            tool => tool.level === level.value
+        );
+
+    }
+
+
+    if(showFavorites){
+
+        tools = tools.filter(
+            tool => favorites.includes(tool.name)
+        );
+
+    }
+
+
+    if(sort.value === "rating"){
+
+        tools.sort(
+            (a,b) => b.rating - a.rating
+        );
+
+    }
+
+    if(sort.value === "name"){
+
+        tools.sort(
+            (a,b) => a.name.localeCompare(b.name)
+        );
+
+    }
+
+
+    grid.innerHTML = "";
+
+    empty.style.display =
+        tools.length ? "none" : "block";
+
+
+    tools.forEach((tool,index)=>{
+
+        const isFavorite =
+            favorites.includes(tool.name);
+
+        const card =
+        document.createElement("article");
+
+        card.className = "tool-card";
+
+        card.style.animationDelay =
+            `${index * 35}ms`;
+
+
+        card.innerHTML = `
+
+            <div class="tool-top">
+
+                <img
+                    class="tool-logo"
+                    src="${tool.image}"
+                    alt="${tool.name} logo"
+                    loading="lazy"
+                    onerror="this.src='https://dummyimage.com/100x100/151525/ffffff&text=AI'"
+                >
+
+                <button
+                    class="favorite ${isFavorite ? "active":""}"
+                    onclick="toggleFavorite('${tool.name}')"
+                    aria-label="Favorite"
+                >
+                    ${isFavorite ? "♥" : "♡"}
+                </button>
+
+            </div>
+
+            <h3>${tool.name}</h3>
+
+            <p>${tool.description}</p>
+
+            <div class="tags">
+
+                ${tool.tags.map(
+                    tag => `<span class="tag">${tag}</span>`
+                ).join("")}
+
+            </div>
+
+            <div class="tool-bottom">
+
+                <span class="rating">
+                    ★ ${tool.rating}
+                </span>
+
+                <span class="price">
+                    ${tool.pricing}
+                </span>
+
+            </div>
+
+            <a
+                class="visit"
+                href="${tool.website}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Visit Tool →
+            </a>
+
+        `;
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/* =====================================================
+   FAVORITES
+   ===================================================== */
+
+function toggleFavorite(name){
+
+    if(favorites.includes(name)){
+
+        favorites =
+            favorites.filter(item => item !== name);
+
+    }else{
+
+        favorites.push(name);
+
+    }
+
+    localStorage.setItem(
+        "ailmaasFavorites",
+        JSON.stringify(favorites)
+    );
+
+    renderTools();
+
+}
+
+
+/* =====================================================
+   CATEGORY FILTER
+   ===================================================== */
+
+document.querySelectorAll(".category")
+.forEach(button => {
+
+    button.addEventListener("click",()=>{
+
+        document
+        .querySelectorAll(".category")
+        .forEach(item =>
+            item.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        selectedCategory =
+            button.dataset.category;
+
         renderTools();
-    </script>
+
+    });
+
+});
+
+
+/* =====================================================
+   EVENTS
+   ===================================================== */
+
+search.addEventListener(
+    "input",
+    renderTools
+);
+
+pricing.addEventListener(
+    "change",
+    renderTools
+);
+
+level.addEventListener(
+    "change",
+    renderTools
+);
+
+sort.addEventListener(
+    "change",
+    renderTools
+);
+
+favoriteButton.addEventListener(
+    "click",
+    ()=>{
+
+        showFavorites = !showFavorites;
+
+        favoriteButton.classList.toggle(
+            "active",
+            showFavorites
+        );
+
+        renderTools();
+
+    }
+);
+
+
+/* =====================================================
+   TOOL COUNT
+   ===================================================== */
+
+document.getElementById("toolCount")
+.textContent = `${aiTools.length}+`;
+
+
+/* =====================================================
+   INITIALIZE
+   ===================================================== */
+
+renderTools();
+
+</script>
+
 </body>
 </html>
+```
